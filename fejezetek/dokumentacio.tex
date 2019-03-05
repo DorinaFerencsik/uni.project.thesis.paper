@@ -1,0 +1,61 @@
+\Chapter{Fejlesztői dokumentáció}
+\label{Chap:dokumen}
+
+\iffalse
+Ebben a fejezetben kell a hallgatónak leírnia a saját eredményeit. Például ilyennek tekinthető a hallgató által elkészített program leírása, algoritmus leírása alkalmazási lehetőségek, eredmények. Lehet benne több alfejezet vagy al-alfejezet is. Ezek számozása és a tartalomjegyzékben  való megjelenítése rögzített. A fejezet címe megváltoztatható az eredmények szerint. Ez a fejezet és a \aref{Chap:tema} együtt összesen 25-60 oldal terjedelmű kell hogy legyen
+\fi
+
+Az Elméleti kifejtés során meghatározott célokat különböző gépi tanulási módszerekkel lehet megoldani amik eltérő eredménnyel, pontossággal fognak működni. A nehézségi osztályok meghatározására elsősorban a  \myaref{ssec:klaszterezes} pontban részletezett klaszterezési módszerek használhatóak
+
+\Section{Adathalmaz előkészítés}
+A fejlesztés legelső lépése az összegyűjtött adatok megfelelő struktúrára való átalakítása és megtisztítása, ezzel megkönnyítve a későbbi feldolgozást valamint növelve a gépi tanulási algoritmusok pontosságát
+
+\SubSection{Adatstruktúra kialakítása}
+Az adatgyűjtés elsődleges eszközeként a szakdolgozat keretein belül készített weboldal szolgált, amely minden információt egy JSON alapú adatbázisban tárolt le. Az adathalmaz előkészítésének a legelső lépése a JSON struktúráról való áttérés egy, a Python programozási nyelv által kezelt, könnyen használható adatstruktúrára. Erre a szakdolgozat során a Pandas \cite{python-pandas} nevű Python csomag által megvalósított DataFrame nevű struktúra fog szolgálni , amely segítségével az adatokat táblázathoz hasonló formában lehet tárolni. Egy DataFrame oszlopai egyedi, a fejlesztő által definiált oszlopnevekkel érhetőek el, soraira index használatával lehet hivatkozni. Az oszlopok egyenként különböző típusúak lehetnek és tartalmazhatnak NULL értékeket. A DataFrame egyik legnagyobb előnye az oszlopok nevesítése, amivel könnyen nyomon követhető hogy az aktuális értékek melyik feature-nek felelnek meg, mit reprezentálnak a valóságban
+
+\begin{programreszlet}
+A  parancs segítségével a JSON struktúra (jsonData) könnyen átalakítható DataFrame-é (dataset). A dataset oszlopai megfelelnek a \myaref{ssec:adatstruktura} pontban részletezett adatoknak.
+\begin{python}
+import pandas
+
+jsonData = pandas.read_json("2019_02_08_10h.json", type='series')
+cleanData = []
+for u in userData:
+  if userData[u]['connectedToStrava'] == True:
+    for i in range(0,len(userData[user]['activities'])):
+       userData[u]['activities'][i]['ageGroup'] = userData[u]['ageGroup']
+       userData[u]['activities'][i]['sex'] = userData[u]['sex']
+       userData[u]['activities'][i].pop('external_id', None)
+       userData[u]['activities'][i].pop('map_id', None)
+       userData[u]['activities'][i].pop('map_resource', None)
+       userData[u]['activities'][i].pop('map_summary', None)
+       cleanData.append(userData[u]['activities'][i]) 
+  else:
+    print('User does not have any activities')
+dataset = pandas.DataFrame(cleanData)
+
+\end{python}
+\end{programreszlet}
+
+
+A fenti parancs segítségével a JSON struktúra (jsonData) könnyen átalakítható DataFrame-é (dataset). A dataset oszlopai megfelelnek a \myaref{ssec:adatstruktura} pontban részletezett adatoknak.
+
+
+\SubSection{Adattisztítás}
+A megfelelő adatstruktúra kialakítása után a következő lépés az adatok megtisztítása. Ez a lépés azért szükséges mert a legfigyelmesebben gyűjtött adathalmaz is tartalmazhat rossz értékeket illetve előfordulhat hogy több helyen hiányzik a valódi érték. Ezeknek a hibáknak a megtalálása és kijavítása több fázisból áll.
+
+\subsubsection{NULL értékek}
+Egy általános adatbázis esetén gyakran előfordul hogy egyes oszlopok NULL értékeket tartalmaznak - ebben az esetben például NULL jelöli ha egy útvonal nincs elérhető adat egy adott jellemzőről. Azonban a gépi tanulási algoritmusok számokat képesek feldolgozni így elengedhetetlen a NULL értékek kiküszöbölése valamilyen formában.
+
+A NULL értékek kiküszöbölésére két elterjedt megoldás létezik:
+\begin{itemize}
+	\item \textbf{NULL értékek törlése:} az egyszerűbb megoldás a NULL értékeket tartalmazó sorok törlése, azonban ennek a módszernek nagy hátránya hogy sok NULL-t tartalmazó adathalmaz esetén jelentős mértékben megcsappan az adathalmaz mérete
+	\item \textbf{NULL értékek feltöltése:} összetettebb, azonban sok esetben célravezetőbb megoldást jelent a NULL értékek helyettesítése valamilyen számított értékkel. Az új értékek számítása különböző módokon történhet, ez nagyban függ az adott jellemző jellegétől
+\end{itemize}
+Amennyiben egy oszlop nagy mértékben tartalmaz NULL értékeket érdemes megfontolni az elvetését vagy külön esetként kezelni mikor van tényleges érték
+
+
+\subsubsection{Kiugró értékek}
+Gyakori jelenség hogy egy jellemző tartalmaz néhány magasan kiugró értéket, amelyek sokszor érvényesek azonban fakadhatnak mérési / rögzítési hibából is. Akár érvényes értékek, akár valamilyen hibából fakadnak érdemes kiküszöbölni őket mivel könnyen eltorzíthatják az eredményeket. 
+
+%\Section{Programkód}

@@ -1,0 +1,298 @@
+\Chapter{Téma elméleti kifejtése}
+\label{Chap:tema}
+
+\iffalse
+Ebben a fejezetben kell a szakdolgozatban felhaszn�lt elm�leti ismeretanyagot, szakirodalmat megadni ill. kifejteni. Lehet benne t�bb alfejezet vagy al-alfejezet is. Ezek sz�moz�sa �s a tartalomjegyz�kben val� megjelen�se r�gz�tett (alfejezet c�me a fejl�cben k�z�pen, az oldalsz�m a l�bl�cben jobbsz�len jelenik meg). A fejezet c�me, azaz a ,,T�ma elm�leti kifejt�se'' megv�ltoztathat� a t�ma szerint. Ezen fejezetben felhaszn�lhat� oldalak mennyis�ge �sszef�gg�sben van a k�vetkez� fejezettel (l�sd \aref{Chap:dokumen}. fejezet bevezet�s�t).\\
+
+�s most m�r g�pelhetj�k a sz�veget\ldots
+
+\Section{Csin�ljunk m�st is}
+K�sz�ts�nk m�g defin�ci�t, t�telt, bizony�t�st, megjegyz�st stb.! Figyelj�k meg az egyes bet�v�ltozatokat!
+\begin{definition}
+Ez egy defin�ci�
+\end{definition}
+
+\begin{lemma}
+Ez egy lemma
+\end{lemma}
+
+\begin{theorem}
+Ez egy t�tel
+\end{theorem}
+
+\begin{proof}
+Ez egy bizony�t�s
+\end{proof}
+
+\begin{corollary}
+Ez egy t�tel
+\end{corollary}
+
+\begin{remark}
+Ez egy megjegyz�s
+\end{remark}
+
+\begin{example}
+Ez egy p�lda
+\end{example}
+�s l�ssuk \myaref{Chap:bevezetes} fejezetben lev� egyenletrendszert most m�r egyenletsz�moz�ssal:
+\begin{alignat}{4}
+  13x &+{} &  4y &    &     & ={} & 9\\
+   3x &-{} & 12y &+{} & 23z & ={} &14
+\end{alignat}
+
+\Section{K�sz�ts�nk sz�nes t�bl�zatokat}
+
+Legyen minden sz�nes: A \verb|\columncolor|, \verb|\rowcolor|,
+\verb|cellcolor| parancsok haszn�lata:
+
+\begin{verbatim}
+\begin{tabular}{|>{\columncolor[gray]{0.5}}l|
+>{\columncolor[rgb]{0.5,0.5,0.7}}c|r|}
+\hline
+egy & kett�& h�rom\\
+\hline
+\rowcolor[cmyk]{0.1,0.3,0.5,0}h�rom & n�gy& �t\\
+\hline
+\rowcolor[rgb]{0.8,0.8,0.2}h�rom &
+\cellcolor[rgb]{1,0.1,0.1} n�gy& �t\\
+\hline
+\end{tabular}
+\end{verbatim}
+
+\begin{center}
+\begin{tabular}{|>{\columncolor[gray]{0.5}}l|>{\columncolor[rgb]{0.5,0.5,0.7}}c|r|}
+\hline
+egy & kett�& h�rom\\
+\hline
+\rowcolor[cmyk]{0.1,0.3,0.5,0}h�rom & n�gy& �t\\
+\hline
+\rowcolor[rgb]{0.8,0.8,0.2}h�rom & \cellcolor[rgb]{1,0.1,0.1} n�gy& �t\\
+\hline
+\end{tabular}
+\end{center}
+
+T�bbf�le sz�nmodell haszn�lhat�: pl. \verb|rgb|, mivel ezt a
+,,legk�nnyebb'' kikeverni (red-green-blue) 3 val�s sz�mb�l,
+melyek mindegyike a $[0,1]$ intervallumb�l ker�lnek ki. Viszont
+h�tr�nya lehet, hogy a nyomtat�si k�p elt�rhet a
+\verb|.dvi|-ban l�tott sz�nt�l, ez�rt szokt�k haszn�lni a
+\verb|cmyk| nev� modellt, mely biztosan j�l megy.
+\fi 
+
+\Section{Mobil alkalmazások}
+Napjainkban rengeteg különböző kerékpáros alkalmazás érhető el amik más más területre fókuszálnak. A következő pontokban ezekre láthatunk néhány példát az egyszerű mérnöki alapú számítástól az útvonalak nyomon követésén keresztül a fejlett, összetett tervező rendszerekig. Látható hogy a felhasználók körében nagy népszerűségnek örvend a különböző alkalmazások közösségi funkciói ahol lehetőség van az ismerősök megtalálására, útvonalak megosztására.  
+
+\SubSection{Bike calculator}
+A "Bike Calculator" \cite{bikecalculator} weboldal és mobil alkalmazás biciklis becsléseket kínál a felhasználói számára, teljesen mérnöki szempontból. A modell figyelembe veszi a sebesség, erőkifejtés, szélellenállás, gravitáció és egyéb tényezők összefüggését azonban egy általános eredményt ad, nincs lehetőség a felhasználó egyéni teljesítményének figyelembe vételére. Ezzel együtt is egy érdekes megoldás ami rengeteg paramétere révén jól skálázható.
+
+\SubSection{Strava}
+A Strava \cite{strava} az egyik legelterjedtebb alkalmazás a sporttevékenységüket nyomon követni kívánók körében, széles funkcionalitással és hatalmas felhasználói bázissal. Lehetőséget nyújt többek között biciklizés, futás, úszás, hegymászás és rengeteg egyéb sportág eredményeinek rögzítésére és korlátozott szintű tervezésére. A tevékenység során rögzített adatokból alapvető statisztikákat készít a felhasználók számára, mint a sebesség és a tengerszint feletti magasság változása valamint a sportoló pulzusának mozgása. Népszerűsíti a Strava-t hogy lehetőséget kínál az ismerősök megtalálására és az útvonalak, tevékenységek megosztására valamint kommentek és "kudo"-k egyfajta elismerés, tetszés nyilvánítás adására. Érdekes funkciói közé tartozik a szegmensek, rövid útvonal szakaszok kezelése ahol a felhasználóknak lehetőségük van rövid távon versenyezni, előrébb kerülni a szegmenst teljesítők listáján valamint számon tartani a saját rekordjaikat. 
+
+A Strava tervezője, jövővel kapcsolatban segítő funkciója egy útvonal tervezőben merül ki,ami segíti a felhasználókat a legnépszerűbb út megtalálásában A és B pont között, térképpel és részletes navigációs leírásokkal. Az útvonal kijelölésénél az alapvető adatokon kívül egy becslést is kapunk a várható időre nézve. A várható idő számolása a bejelentkezett felhasználó legutóbbi 4 heti teljesítménye alapján történik. Előrelépés hogy egyáltalán figyelembe veszi a felhasználó eddigi útvonalait azonban ennek a módszernek is vannak hiányosságai így csak egy közepes kiindulási alapot ad. Alapvető gond ezzel a becsléssel hogy az útvonalak rögzítésénél a felhasználó hiába állítja be az út típusát (verseny, edzés, ingázás stb.) a Strava számítás során ezeket nem veszi figyelembe, így könnyen előfordulhat hogy a felhasználó kiugróan pontatlan, akár használhatatlan eredményt kap. Például az előző hetekben a saját határait feszegetve versenyre készült, most viszont szeretne egy nyugodt családi biciklizésre elindulni - ekkor nyilván nem fog rekordokat dönteni és a Strava által számolt várható idő semmilyen tényleges információval nem fog szolgálni neki.
+
+
+\SubSection{Endomondo}
+Az Endomondo \cite{endomondo} webes és mobil alkalmazás sporttevékenység nyomon követését hivatott megkönnyíteni a felhasználói számára. Rengeteg különböző sportágat megkülönböztet, ezekről külön statisztikákat készít valamint egyéni célokat lehet ezekre vonatkozóan beállítani. Az egyes sportágakat GPS alapú jelkövetés segítségével lehet nyomon követni, illetve kézzel is létrehozhatóak új tevékenységek, továbbá lehetőség van különböző alkalmazásokból vagy fájlból importálni korábban teljesített útvonalakat. Az alkalmazás megvalósít közösségi funkciókat is, a felhasználóknak lehetőségük van megkeresni az ismerőseiket akikkel később megoszthatják legújabb sporttevékenységüket valamint versenghetnek egymással a közösen felállított célok eléréséért. Az Endomondo érdekes adaléka hogy mozgás közben audió visszajelzést biztosít a felhasználók számára az addigi teljesítményükről, így a felhasználók sportolás közben is pontos információval rendelkezhetnek anélkül hogy az alkalmazást futtató eszközüket kellene figyelniük.
+
+
+\SubSection{Best Bike Split}
+A Best Bike Split \cite{bestbikesplit} egy rendkívül összetett rendszer amely elsősorban versenyzők számára kínál széles funkcionalitást. Alapköve a versenytáv megtételének optimalizálása melynek keretei között személyre szabott, szakaszokra bontott tervet állít fel a felhasználó számára annak érdekében hogy a tervezett távot a lehető legjobb idő alatt teljesítse. Ez a terv alapul veszi a felhasználó biciklijének és felszerelésének a tulajdonságait (kerekek típusa, bicikli súlya, sisak kialakítása stb.) a preferált versenyzési módot (elhelyezkedés a verseny során, sík terep illetve emelkedő esetén) valamint már teljesített edzést, versenyeket és természetesen a teljesítendő verseny paramétereit. Prémium előfizetés használata során a kalkulációt befolyásolja a várható időjárás is. A rendszer használható tetszőleges útvonalakra azonban az átlag kerékpáros számára szükségtelenül bonyolult, összetett így elsősorban versenyzők számára hasznos.
+
+\SubSection{Összefoglalás és célkitűzés}
+Több tucatnyi hasonló alkalmazás létezik, webes felülettel illetve Android és iOS lefedéssel hiszen a kerékpározás fellendülőben van napjainkban, így egyre több alkalmazás készül a felhasználói igények kielégítésére mind versenyzők mind pedig hétköznapi felhasználók számára akiknek a biciklizés inkább közlekedési mint sport eszköz. Ezen alkalmazások felsorolása vagy részletezése nem célja ennek a szakdolgozatnak, azonban néhány példa alapján is könnyen meghatározhatóak általános csoportok amelyekbe a létező megoldások besorolhatóak.
+
+\subsubsection{Útvonal rögzítés} 
+A legalapvetőbb funkció amire különböző megoldások léteznek. A legegyszerűbb eszközök esetén például csak az aktuális sebesség és a távolság kerül megállapításra egy, a kerékre rögzíthető érzékelőnek a segítségével. Az érzékelő használatával számolni lehet hogy a kerék hányszor fordul körbe adott időablakon belül, ennek és a kerék méretének felhasználásával könnyen megállapítható a pillanatnyi sebesség illetve az útvonal kezdete óta megtett távolság. Azonban a növekvő igényekhez igazodva ma már lényegesen elterjedtebbek a GPS alapú mobil alkalmazások amik a pillanatnyi sebességen és távolságon kívül pontosan tudják rögzíteni az út egyéb paramétereit is mint pl.: kezdő és végpont koordinátái, mozgással töltött idő, megtett emelkedő, legalacsonyabb és legmagasabb pont, átlag sebesség, maximum sebesség. Ezek a jellemzők lényegesen pontosabb leírást adnak egy-egy útvonalról, letárolásukkal könnyen nyomon követhető a személyes fejlődés, kitűzhetőek heti, havi, éves célok. Az útvonal paramétereinek nyomon követése, struktúrája és tárolása megvalósításonként változó, azonban a cél mindig ugyanaz: minél több jellemző meghatározása a lehető legrészletesebb módon.
+
+\subsubsection{Közösségi funkciók} 
+A kerékpáros útvonalakat nyomon követő mobil alkalmazások elterjedésével egy új tendencia jelent meg; egyre többször figyelhető meg valamilyen jellegű közösségi funkció megvalósítása az alkalmazáson belül, amik nagy népszerűségnek örvendenek az alkalmazást használók körében. Ezen funkciók nagyban különbözhetnek, általánosságban lehetőség van az alkalmazást használó ismerősök megtalálására, megtett útvonalak megosztására illetve valamilyen formában tetszésnyilvánítás / elismerés adására. Ezeken kívül általában megjelenik valamilyen ösztönzés, lelkesítés ami segíthet a teljesítmény javításában, a kitűzött célok elérésében. A Strava esetében ez a szegmensek formájában jelenik meg, amik lényegében rövid, maximum néhány száz méteres útvonalak, általában valamilyen szempontból nehezebb szakaszok (pl.: emelkedő). Ezen szegmensek teljesítésével a felhasználó automatikusan felkerül több rangsorra is (globális, erre az évre vonatkozó, nem és korcsoport alapján lebontott) ahol lehetősége van ismerősökkel és ismeretlenekkel vetélkedni ezzel felébresztve a versenyszellemet. 
+
+\subsubsection{Tervezés, becslés} 
+A kerékpáros alkalmazások fejlődésének következő lépcsőfoka az útvonalak tervezése és a teljesítmény becslése. Útvonalak tervezésére kevésbé kerékpár specifikus alkalmazások is lehetőség adnak mint például a Google Térkép de sok, kifejezetten kerékpárosoknak készült alkalmazásban is léteznek megvalósítások. A tervezés különböző szempontok alapján történhet: egyik fontos szempont a távolság (ez a legfontosabb amennyiben a cél az út minél gyorsabb megtétele A és B pont között), egy másik pedig a népszerűség szóval foglalható össze. Az utóbbi főleg akkor fontos ha a kerékpározásra nem közlekedés szerűen tekintünk hanem inkább mint sport, kikapcsolódás hiszen ilyenkor előrébb kerül a jogos felhasználói igény az olyan útvonalakra ahol szép környezetben, lehetőség szerint autós és gyalogos forgalomtól zavartalanul lehet biciklizni. Az útvonalak tervezéséhez szorosan kapcsolódik a teljesítmény, a várható idő meghatározása ami koránt sem egyszerű feladat. Ennek legalapvetőbb megoldása a Bike calculator által is megvalósított mérnöki, fizikai modell, ahol a teljesítmény tisztán a felszerelés és a megtenni kívánt út paraméterei alapján kerül kiszámításra
+
+
+\subsubsection{Tervezés, becslés - egyéni teljesítmény alapján} 
+Az útvonal tervezés és a várható teljesítmény becslésének továbbfejlesztésének, pontosításának alapjául az eddig megtett útvonalak és az elért eredmények szolgálhatnának, ez azonban egy olyan terület ahol még nem sok megoldás született. Ide sorolható a Strava által fejlesztett útvonal tervező, ahol a várható idő becsléséhez alapul veszi a bejelentkezett felhasználó elmúlt 4 heti teljesítményét, és míg ez egy jó kezdeményezés a valóságban nem mindig szolgál pontosabb információval mint egy egyszerű, fizikai összefüggéseken alapuló általános modell. Megnehezíti a pontos becslések készítését hogy egy adott felhasználó sokszor kevés adattal rendelkezik amelyek nem elég változatosak egy új útvonal esetén várható teljesítmény megbecsléséhez.
+
+
+Ezen 4 fő csoport közül az első három által meghatározott problémákra, igényekre mára már rengeteg, változatos módon megvalósított megoldás létezik, így ezeknek a tárgyalásától a továbbiakban eltekintünk. Azonban az utolsó probléma, a felhasználó egyéni teljesítményének figyelembe vétele egy nyitott terület, ahova nem sokan merészkedtek még. \TODO ez a szakdoga célja  
+ 
+
+
+ minden sport esetén az adott ember, sportoló az alapvető tényező, az ő képességei fogják meghatározni legnagyobb részben az eredményeit. Természetesen a felszerelés és a terepviszonyok is nagy hatással vannak a végeredményre de az emberi tényező nem hagyható ki a számítások során amennyiben növelni akarjuk a pontosságot.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\Section{Megválaszolandó kérdések}
+A sportteljesítmény becslése nehéz feladat, mivel egyénenként nagyon eltérő lehet, valamint az út nyers adatain kívül (távolság, emelkedő, időjárás) a egyén pillanatnyi fizikai és szellemi állapota is nagyban befolyásolja (álmosság, kimerültség, kedvtelenség stb.). Ezért el kell dönteni hogy egy általános modell megépítése a cél, ami esetleg életkor, nem, edzettségi szint szerint finomhangolható azonban kisebb pontossággal rendelkezik, vagy személyre szabott, pontos becsléseket kell elérni ahol viszont a gépi tanulás során nehézséget okozhat a kis méretű adathalmaz, hiszen kevesen rendelkeznek akár csak néhány száz rögzített úttal, míg a megfelelő pontossághoz ehhez nagyságrendekkel több adatra van szüksége az egyes algoritmusoknak
+
+
+
+
+\SubSection{Nehézségi osztályok meghatározása - eddigiek }
+A Strava-ról gyűjtött utak sok adatot tartalmaznak azonban nincsenek kategorizálva, így cél az eddig megtett utakat nehézség alapján több osztályba sorolni, azonban ennek megvalósítása kérdéses. Mivel a helyes label-ek hiányoznak klaszterezési módszereket kell használni. Várhatóan az egyén adatai alapján és a összes összegyűjtött adat alapján készült osztályok különbözőek lesznek, hiszen más útvonalakat tettek meg, eltérő eredményekkel.
+
+Egy általános modell elkészítése az elsődleges feladat, mivel az adatok sokszínűsége és mennyisége miatt jobb kiindulópontot jelent. Amennyiben egy adott felhasználónak megfelelően sok és sokféle útadata van akkor érdemes lehet az egyéni adatokra is kipróbálni az osztályozást.
+
+\SubSection{Nehézség meghatározása - új útvonalra}
+A már megtett útvonalak osztályozása után a következő lépés az új, megtenni kívánt útvonalak nehézségének meghatározása. Ez megvalósítható egyrészt a már betanított klaszterezési algoritmusok felhasználásával, másrészt a klaszterezés által meghatározott osztályok label-jeit felhasználva valamilyen osztályozással. 
+
+
+%Időpont is érdekes lehet (reggeli / esti között van e különbség)
+\SubSection{Időtartam becslés}
+
+Az egyik legalapvetőbb feladat a várható idő meghatározása, hiszen ez az egyik legmeghatározóbb pontja a kerékpározásnak - mennyi időbe fog telni mire megtesz valaki adott kilométert? Ennek a kérdésnek a megválaszolására alapvetően a különböző regressziók alkalmasak, amik az út paraméterei alapján folytonos értéket adnak vissza. Azonban ez a pont kicsit bonyolultabb mint amilyennek tűnik, mivel alapvetően kétféle időtartamot különböztetünk meg: a mozgási és a tényleges időtartamot. Az első jelöli az összesen mozgással töltött időt, míg a második magába foglalja a különböző megállókat mint a pihenés, várakozás forgalmi lámpáknál, hosszabb utak esetén étkezéssel töltött időket stb. Ennek megoldására több lehetőség is kínálkozik.
+
+A legegyszerűbb megoldás olyan regresszió használata amely egy inputhoz több eredmény, output-ot is tud társítani. Erre kínál lehetőséget \myaref{ssec:mlpregressor} pontban részletezett MLPRegressor. Ennek használatával rögtön mindkét idő előáll, nem szükséges további lépéseket tenni.
+
+A második lehetőség több részből áll. Első lépésben tetszőleges regresszióval csak a mozgási időre készül becslés, mivel ez szorosabban összefügg  az olyan alapvető adatokkal mint a távolság. Második lépésként pedig egy újabb regressziós modellt kell használni, ami a mozgási idő és egyéb paraméterek segítségével képes a teljes várható időre becslést készíteni.
+
+
+\SubSection{Edzésterv}
+%Nem útvonal meghatározása, hanem 
+
+%1. mekkora távot mennyi idő alatt milyen emelkedővel stb. kellene megtennie hogy fejlődjön
+
+%2. felhasználó által beadott út idejének becslése az alapján hogy normál / edzés szerű utat akar
+
+%\TODO kifejtés
+
+A felhasználók számára javasolt edzésterveknek több lehetséges megvalósítási módja is van. A legteljesebb kivitelezés a térképen jelölt konkrét útvonal, célul kitűzött teljesítési és részidőkkel, nehézségi szinttel. Azonban a szakdolgozat során egy valamivel egyszerűbb feladat elérése a cél, amit két alrészre lehet bontani.
+\begin{itemize}
+	\item Az első típus esetén a felhasználó ad meg egy útvonalat, aminek adataiból kell a teljes várható időre, részidőkre, sebességre célkitűzéseket adni, alapul véve hogy a felhasználó milyen nehézségi szintet tűz ki. A részidőket érdemes külön vizsgálni, hiszen egy meredeken emelkedő szakasz teljesítése sokkal nagyobb kihívás a kerékpározók számára mint egy viszonylag sík terepen való haladás.
+	\item A második típus esetén az út adatait is az algoritmusnak kell kiszámolnia, ideértve az út hosszát és a szintemelkedéseket. Ezen adatok valamint a kitűzött teljesítési idő egyensúlyba hozásával kell egy-egy nehézségi szinthez racionális nehézségű útvonal tervet létrehozni.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\Section{Gépi tanulás}
+Rengeteg gépi tanulási módszer létezik amik jól használhatóak különböző modellek, becslések, osztályok készítésére. Ezek a módszerek ma már legtöbbször egy programozási nyelv adott könyvtárának, csomagjának segítségével egyszerűen használhatóak. Ennek megfelelően a Python nyelv scikit-learn \cite{scikitlearn} csomagja adta a gépi tanulási módszerek alapját a szakdolgozat elkészítése során.
+
+Az egyes algoritmusok használatán túl fontos a megfelelő adatforrás megtalálása, valamint az adatkinyerési és feldolgozási folyamat leegyszerűsítése, átláthatóvá tétele. 
+
+Ebben a fejezetben találhatóak meg a szakdolgozat során használt gépi tanulási módszertanok részletezése, valamint az adatgyűjtéshez létrehozott rendszer eszközeinek kifejtése.
+
+
+
+\SubSection{Regresszió}
+%\TODO Regresszió fogalma, használhatósága
+A regresszió egy felügyelt gépi tanulási módszer amely folytonos kimenetet generál. A tanuláshoz szükség van a bemeneti adathalmazra valamint a helyes kimeneti értékekre, amik elemzésével az algoritmus képes új bemeneti adatpárokra kimenetet generálni.
+
+\subsubsection{Ridge Regression}
+
+%\TODO szöveges kifejtés
+%A ridge regresszió a legkisebb négyzetek módszerének néhány problémájával foglalkozik, \TODO normalizálva az együtthatók mértékét. Az együtthatók
+A Ridge regresszió sajátossága hogy a túlilleszkedés kiküszöbölésének érdekében módosítja a költség funkció számítását. Ehhez egy "büntető" tényezőt, egy plusz súlyt használ, ezzel ellensúlyozva a hibákat.
+$$ \min_{w} \norm{Xw-y}_2^2 + \alpha \norm{w}_2^2$$ 
+Itt $\alpha \geq 0 $ egy komplexitási paraméter ami a csökkenés mértékét befolyásolja: minél nagyobb az $\alpha$ értéke annál gyorsabb a csökkenés.
+
+Az algoritmus bonyolultsága egy $n \times p$ méretű $X$ mátrix esetén $O(np^2)$ amennyiben $n \geq p$. 
+
+\subsubsection{Lasso}
+A \textit{Least Absolute Shrinkage and Selection Operator} angol kifejezés rövidítése. 
+%\TODO szöveges kifejtés
+
+$$ \min_{w}\frac{1}{2n_{samples}} \norm{Xw-y}_2^2 + \alpha\rho \norm{w}_1$$
+
+\subsubsection{Elastic Net}
+\TODO szöveges kifejtés
+
+$$ \min_{w}\frac{1}{2n_{samples}} \norm{Xw-y}_2^2 + \alpha\rho \norm{w}_1 + \frac{\alpha(1-\rho)}{2} \norm{w}_2^2$$
+
+\subsubsection{MLPRegressor} \label{ssec:mlpregressor}
+Multi-layer Perceptron Regression, azaz mesterséges neuronokból felépülő többrétegű struktúrán, más néven egy neurális hálón alapuló regressziót valósít meg. Ez egy felügyelt tanulási algoritmus, tehát inputként a feature-ok egy mátrixát ($X$) valamint a hozzájuk tartozó helyes label-eket ($y$) várja. Ezen értékek alapján backpropagation-t használva a módszer folytonos értékek készletével tér vissza. Az MLPRegressor továbbá több kimenetű regressziót is támogat, így egy mintához több output érték is rendelhető.
+
+
+\SubSection{Osztályozás}
+Az osztályozás egy felügyelt gépi tanulási algoritmus, melynek lényege hogy adott input adatokból és helyes label-jeikből (amik megadják hogy az egyes adatok melyik osztályhoz tartoznak) tanulva az új adatokhoz megfelelő osztályt, csoportot rendeljen. 
+\subsubsection{Nearest Neighbors Classification}
+
+A szomszéd-alapú osztályozás példányalapú tanulás: nem egy általános belső modellt próbál konstruálni, csak egyszerűen a training data példányait tárolja.
+
+A scikit-learn csomag két különböző legközelebbi szomszéd módszert is kínál: a KNeighborsClassifier-t és a RadiusNeighborsClassifier-t
+
+\begin{itemize}
+	\item \textbf{KNeighborsClassifier:} ez a módszer az egyes pontok $k$ legközelebbi szomszédja alapján osztályoz, ahol $k$ egy a fejlesztő által megadott egész szám. A $k$ optimális értéke nagyban függ az adattól: általában egy nagyobb $k$ elnyomja az anomáliákat, zajok hatását, azonban az osztály határok kevésbé lesznek egyértelműek. Ez a módszer elterjedtebb.  
+	
+	\item \textbf{RadiusNeighborsClassifier:} az előző módszerrel ellentétben nem a $k$ legközelebbi szomszédot veszi figyelembe, hanem a fejlesztő által megadott $r$ sugárba eső pontokat csoportosítja egy osztályba. Amennyiben az adathalmaz nem egyenletesen mintavételezett a RadiusNeighborsClassifier jobb választás lehet.
+\end{itemize}
+
+\subsubsection{Nearest Centroid Classifier}
+Egyszerű algoritmus, ahol minden osztályt a tagjai középpontja reprezentál
+
+\subsubsection{MLPClassifier}
+Multi-layer Perceptron Classification, azaz mesterséges neuronokból felépülő többrétegű struktúrán, más néven egy neurális hálón alapuló osztályozást valósít meg. Bemenetként a feature-ok $X$ mátrixát és a label-ek $y$ vektorát várja. A modell backpropagation-t használ a tanulás során, pontosabban gradiens leereszkedést, ami backpropagation használatával kerül kiszámításra. Az osztályozáshoz a kereszt entrópia funkciót minimalizálja, az egyes $x$ mintákhoz a $P(y|x)$ valószínűséget becsülve. Támogatja a  multi-class osztályozást a Softmax függvény output funkcióként való alkalmazásával, valamint a multi-label osztályozást, melynek segítségével egy minta több osztályba is sorolható.
+
+
+\SubSection{Klaszterezés} \label{ssec:klaszterezes}
+A klaszterezés alapfeladata hasonló az osztályozáséhoz, az adatokat különböző csoportokba kell rendezni, azonban ez felügyelet nélküli módszer, a helyes label-ek nélkül próbál adott számú osztályt kialakítani. 
+\subsubsection{KMeans}
+\TODO kifejtés
+
+\subsubsection{MeanShift}
+\TODO kifejtés
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\Section{A gépi tanulás alapköve - adatok}
+
+A gépi tanulás módszerei önmagukban mit sem érnek, megfelelő méretű és minőségű adathalmazra van szükség amiből az algoritmusok tanulni tudnak. Azonban adatgyűjtés mindig érzékeny terület, sok időt, energiát felemészt és a kívánt eredmény ezek befektetésével sem mindig garantált. A szakdolgozathoz elsősorban biciklivel megtett utak statisztikai adataira van szükség, amihez a Strava mobil és webes alkalmazás ad kiindulási alapot. A fejlesztői munkát segíti a Strava saját API-ja, aminek segítségével egyszerűen megvalósítható a felhasználók autentikációja valamint a szükséges adatok elérése. 
+
+\SubSection{Adatgyűjtés}
+A Strava által gyűjtött és tárolt adatok elérésének alapját egy, a szakdolgozat keretein belül készített weboldal adja. Ezen oldal felkeresésével a felhasználók tájékozódhatnak a szakdolgozatról, az adatgyűjtés fontosságáról valamint alapvető funkciókat használhatnak. Az oldalon lehetőség van új felhasználó létrehozására, már létező fiókokba való bejelentkezésre. Bejelentkezés után a felhasználó hozzákapcsolhatja a Strava fiókját a weblapon létrehozott fiókjához, ezzel lehetővé téve az útvonalai statisztikai adatainak olvasását. A weboldalon továbbá lehetőséget fog kínálni az elkészült, betanított program letöltésére, amivel a felhasználók is megtapasztalhatják az egyes algoritmusok hatékonyságát. A weboldal az alábbi eszközök felhasználásával valósult meg:
+
+\subsubsection{JQuery}
+A JQuery egy népszerű JavaScript könyvtár amely lehetőséget ad a HTML elemek könnyebb manipulálására, az események egyszerűbb kezelésére, animációk megvalósítására.
+
+\subsubsection{Firebase}
+A Firebase egy Google által fejlesztett sokoldalú rendszer, amely egyszerű eszközöket kínál egy weboldal logikai részének felépítéséhez. Nem alkalmas robosztus rendszerek létrehozásához, azonban kisebb projektek menedzseléséhez megfelelő alapot kínál. A projekteket létrehozás után online lehet kezelni és a Firebase funkcióit weboldalakban és mobil alkalmazásokban is (mind Android és IOs) egyszerűen lehet használni. A rendszer alapját egy Node.js szerver és egy JSON alapú adatbázis adja valamint elérhető egy általános célú tárhely tetszőleges file-ok tárolásához. 
+
+\subsubsection{Firebase - Autentikáció}
+A szakdolgozathoz készített weboldal szempontjából a Firebase egyik legfontosabb eleme az autentikációs rendszer. A Firebase projektben való engedélyezés után néhány sor JavaScript kóddal gyorsan és biztonságosan megvalósítható az új felhasználók regisztrálása, bejelentkeztetése. Az email alapú regisztráláson túl lehetőség van külső rendszerekkel való autentikációra is mint a Google fiók, Facebook, Github. Továbbá elérhető a már regisztrált felhasználók emailen kersztül történő értesítése is.
+
+\subsubsection{Firebase - Adatbázis}
+A Firebase alapvetően ingyenes, emiatt az adatbázisnak vannak méret és sebességbeli korlátjai, azonban megfelelő kiindulási alapot ad. A JSON alapú struktúra megkönnyíti az adatok kliensen való kezelését valamint egy ilyen méretű alkalmazás esetén egyszerűen karban tartható. Fontos kiemelni az adatbázis hozzáférhetőségének konfigurálási lehetőségét. Lehetőség van az adatbázis egészére vagy a részfákra olvasási és írási beállításokat megadni, amik korlátozhatóak a bejelentkezett felhasználó azonosítója alapján is. Ennek felhasználásával könnyen megvalósítható hogy a rendszer összes felhasználója csak a saját adataihoz férjen hozzá ami fontos adatvédelmi szempont.
+
+\SubSection{Adatstruktúra} \label{ssec:adatstruktura}
+A szakdolgozathoz készített weboldal fő célja hogy lekérje és tárolja azon felhasználók útvonalait akik regisztrálás után kapcsolódtak a Strava fiókjukhoz. A Strava API-ja az utak lekérésekor SummaryActivity objektumok tömbjével tér vissza, ahol minden objektum 39 változóval jellemez egy utat, aktivitást. Ez a 39 jellemző magába foglalja többek között a felhasználó azonosítóját, a megtett távot, a teljesített kihívások számát, az ismerősök megjegyzéseinek a számát és rengeteg egyéb információt. A gépi tanulás során ezeknek a jellemzőknek csak egy részét érdemes használni, amik szorosabban kapcsolódnak az út valós leírásához. Ezek a jellemzők a következők: 
+
+\begin{itemize}
+	\item \textbf{average\_speed:} átlagsebesség (méter/másodperc)
+	\item \textbf{average\_watts:} átlagos erőkifejtés az útvonal során. Amennyiben nem biztosított az értéke -1
+	\item \textbf{commute:} egy tevékenység rögzítésekor lehetőség van azt 'ingázásként' felcímkézni, ezzel megjelölve hogy nem egy verseny vagy túra adat, hanem mindennapi, például munkába vagy boltba járási útvonal. Feltételezhető hogy ilyenkor az illető nem a minél jobb eredmények elérésére törekszik, inkább rutin szerűen, átlagos tempóban halad (Logikai érték, -1 amennyiben nem biztosított)
+	\item \textbf{device\_watts:} azt jelöli hogy az erőkifejtési adatokat tényleges mérőkészülék szolgáltatja vagy csupán becsült érték (logikai, Hamis amennyiben becsült érték) 
+	\item \textbf{distance:} a megtett távolság (méter)
+	\item \textbf{elapsed\_time:} összesen eltelt idő (másodperc)
+	\item \textbf{elev\_high:} az út legmagasabb pontja (méter)
+	\item \textbf{elev\_low:} az út legalacsonyabb pontja (méter)
+	\item \textbf{end\_latlng:} az útvonal végpontjának hosszúsági és szélességi helyzete
+	\item \textbf{flagged:} az útvonal meg van e jelölve (logikai)
+	\item \textbf{has\_heartrate:} elérhető e pulzus adat (logikai)
+	\item \textbf{heartrate\_opt\_out:} 
+	\item \textbf{kilojoules:} összes kifejtett erő mennyisége (kilojoule)
+	\item \textbf{max\_speed:} maximum sebesség az út során (méter/másodperc)
+	\item \textbf{max\_watts:} maximális erőkifejtés az út során
+	\item \textbf{moving\_time:} mozgással töltött idő (másodperc)
+	\item \textbf{pr\_count:}
+	\item \textbf{resource\_state}
+	\item \textbf{start\_date\_local:} az út kezdési ideje (dátum)
+	\item \textbf{start\_latlng:} az útvonal kezdőpontjának hosszúsági és szélességi helyzete
+	\item \textbf{total\_elevation\_gain:} összesen megtett emelkedő (méter)
+	\item \textbf{trainer:} az útvonal gépen lett e megtéve
+	\item \textbf{weighted\_average\_watts:}
+	\item \textbf{workout\_type:} tevékenység típusa, lehet edzés vagy verseny (egész szám, ha nincs megadva akkor -1 ?? )
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
