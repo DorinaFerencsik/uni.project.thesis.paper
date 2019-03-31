@@ -33,10 +33,11 @@
 \usepackage[magyar]{babel}
 %csv fájl beolvasó csomag
 \usepackage{csvsimple}
+\usepackage{tikz}
 %Python megjelenítő
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{cmr}{bx}{n}{10} % for bold       txtt instead of cmr
-\DeclareFixedFont{\ttm}{T1}{}{cmr}{n}{10}  % for normal
+\DeclareFixedFont{\ttm}{T1}{cmr}{m}{n}{10}  % for normal
 \DeclareFixedFont{\tti}{T1}{cmr}{m}{it}{10}  % for italy
 \usepackage{xcolor}
 % Custom colors
@@ -46,6 +47,16 @@
 \definecolor{deepred}{RGB}{186,33,33}
 \definecolor{deepgreen}{RGB}{0,128,0}
 \definecolor{lightgrey}{RGB}{245,245,245}
+\definecolor{darkgrey}{RGB}{97,97,97}
+
+\definecolor{chart0}{HTML}{006999}%{003f5c} %006999
+\definecolor{chart1}{HTML}{7781bb}%{444e86} %7781bb
+\definecolor{chart2}{HTML}{c08bc1}%{955196} %c08bc1
+\definecolor{chart3}{HTML}{e67fa3}%{dd5182} %e67fa3
+\definecolor{chart4}{HTML}{ff9380}%{ff6e54} %ff9380
+\definecolor{chart5}{HTML}{ffd280}%{ffa600} %ffd280
+
+%#616161
 \usepackage{listings}
 % Python style for highlighting
 \newcommand\pythonstyle{\lstset{
@@ -60,8 +71,13 @@
 		emph={yaaaay}
 		emphstyle=\color{deepred},
 		stringstyle=\color{deepred},
-		frame=tb,                         % Any extra options here
-		showstringspaces=false            % 
+		frame=tb,%tb,                         % Any extra options here
+		showstringspaces=false,           % 
+		numbers=left,
+		numberstyle={\ttm \color{darkgrey}}
+		%numbersep=9pt,
+		%xleftmargin=2em,
+		%framexleftmargin=2.1em
 }
 }
 
