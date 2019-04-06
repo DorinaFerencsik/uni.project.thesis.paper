@@ -89,7 +89,7 @@ A "Bike Calculator" \cite{bikecalculator} weboldal és mobil alkalmazás bicikli
 \SubSection{Strava}
 A Strava \cite{strava} az egyik legelterjedtebb alkalmazás a sporttevékenységüket nyomon követni kívánók körében, széles funkcionalitással és hatalmas felhasználói bázissal. Lehetőséget nyújt többek között biciklizés, futás, úszás, hegymászás és rengeteg egyéb sportág eredményeinek rögzítésére és korlátozott szintű tervezésére. A tevékenység során rögzített adatokból alapvető statisztikákat készít a felhasználók számára, mint a sebesség és a tengerszint feletti magasság változása valamint a sportoló pulzusának mozgása. Népszerűsíti a Strava-t hogy lehetőséget kínál az ismerősök megtalálására és az útvonalak, tevékenységek megosztására valamint kommentek és "kudo"-k egyfajta elismerés, tetszés nyilvánítás adására. Érdekes funkciói közé tartozik a szegmensek, rövid útvonal szakaszok kezelése ahol a felhasználóknak lehetőségük van rövid távon versenyezni, előrébb kerülni a szegmenst teljesítők listáján valamint számon tartani a saját rekordjaikat. 
 
-A Strava tervezője, jövővel kapcsolatban segítő funkciója egy útvonal tervezőben merül ki,ami segíti a felhasználókat a legnépszerűbb út megtalálásában A és B pont között, térképpel és részletes navigációs leírásokkal. Az útvonal kijelölésénél az alapvető adatokon kívül egy becslést is kapunk a várható időre nézve. A várható idő számolása a bejelentkezett felhasználó legutóbbi 4 heti teljesítménye alapján történik. Előrelépés hogy egyáltalán figyelembe veszi a felhasználó eddigi útvonalait azonban ennek a módszernek is vannak hiányosságai így csak egy közepes kiindulási alapot ad. Alapvető gond ezzel a becsléssel hogy az útvonalak rögzítésénél a felhasználó hiába állítja be az út típusát (verseny, edzés, ingázás stb.) a Strava számítás során ezeket nem veszi figyelembe, így könnyen előfordulhat hogy a felhasználó kiugróan pontatlan, akár használhatatlan eredményt kap. Például az előző hetekben a saját határait feszegetve versenyre készült, most viszont szeretne egy nyugodt családi biciklizésre elindulni - ekkor nyilván nem fog rekordokat dönteni és a Strava által számolt várható idő semmilyen tényleges információval nem fog szolgálni neki.
+A Strava tervezője, jövővel kapcsolatban segítő funkciója egy útvonal tervezőben merül ki,ami segíti a felhasználókat a legnépszerűbb út megtalálásában A és B pont között, térképpel és részletes navigációs leírásokkal. Az útvonal kijelölésénél az alapvető adatokon kívül egy becslést is kapunk a várható időre nézve. A várható idő számolása a bejelentkezett felhasználó legutóbbi 4 heti teljesítménye alapján történik. Előrelépés hogy egyáltalán figyelembe veszi a felhasználó eddigi útvonalait azonban ennek a módszernek is vannak hiányosságai így csak egy közepes kiindulási alapot ad. Alapvető gond ezzel a becsléssel hogy az útvonalak rögzítésénél a felhasználó hiába állítja be az út típusát (verseny, edzés, ingázás stb.) a Strava számítás során ezeket nem veszi figyelembe, így könnyen előfordulhat hogy a felhasználó kiugróan pontatlan, akár használhatatlan eredményt kap. Például az előző hetekben a saját határait feszegetve versenyre készült, most viszont szeretne egy nyugodt családi biciklizésre elindulni - ekkor nyilván nem fog rekordokat dönteni és a Strava által számolt várható idő semmilyen tényleges információval nem fog szolgálni számára.
 
 
 \SubSection{Endomondo}
@@ -102,22 +102,62 @@ A Best Bike Split \cite{bestbikesplit} egy rendkívül összetett rendszer amely
 \SubSection{Összefoglalás és célkitűzés}
 Több tucatnyi hasonló alkalmazás létezik, webes felülettel illetve Android és iOS lefedéssel hiszen a kerékpározás fellendülőben van napjainkban, így egyre több alkalmazás készül a felhasználói igények kielégítésére mind versenyzők mind pedig hétköznapi felhasználók számára akiknek a biciklizés inkább közlekedési mint sport eszköz. Ezen alkalmazások felsorolása vagy részletezése nem célja ennek a szakdolgozatnak, azonban néhány példa alapján is könnyen meghatározhatóak általános csoportok amelyekbe a létező megoldások besorolhatóak.
 
-\TODO táblázat a biciklis alkalmazásokról (összefoglalás hogy mi mit tud)
+
+
 
 \subsubsection{Útvonal rögzítés} 
-A legalapvetőbb funkció amire különböző megoldások léteznek. A legegyszerűbb eszközök esetén például csak az aktuális sebesség és a távolság kerül megállapításra egy, a kerékre rögzíthető érzékelőnek a segítségével. Az érzékelő használatával számolni lehet hogy a kerék hányszor fordul körbe adott időablakon belül, ennek és a kerék méretének felhasználásával könnyen megállapítható a pillanatnyi sebesség illetve az útvonal kezdete óta megtett távolság. Azonban a növekvő igényekhez igazodva ma már lényegesen elterjedtebbek a GPS alapú mobil alkalmazások amik a pillanatnyi sebességen és távolságon kívül pontosan tudják rögzíteni az út egyéb paramétereit is mint pl.: kezdő és végpont koordinátái, mozgással töltött idő, megtett emelkedő, legalacsonyabb és legmagasabb pont, átlag sebesség, maximum sebesség. Ezek a jellemzők lényegesen pontosabb leírást adnak egy-egy útvonalról, letárolásukkal könnyen nyomon követhető a személyes fejlődés, kitűzhetőek heti, havi, éves célok. Az útvonal paramétereinek nyomon követése, struktúrája és tárolása megvalósításonként változó, azonban a cél mindig ugyanaz: minél több jellemző meghatározása a lehető legrészletesebb módon.
+A legalapvetőbb funkció amire különböző megoldások léteznek. A legegyszerűbb eszközök esetén például csak az aktuális sebesség és a távolság kerül megállapításra egy, a kerékre rögzíthető érzékelőnek a segítségével. Az érzékelő használatával számolni lehet hogy a kerék hányszor fordul körbe adott időablakon belül, ennek és a kerék méretének felhasználásával könnyen megállapítható a pillanatnyi sebesség illetve az útvonal kezdete óta megtett távolság. Azonban a növekvő igényekhez igazodva ma már lényegesen elterjedtebbek a GPS alapú mobil alkalmazások amik a pillanatnyi sebességen és távolságon kívül pontosan tudják rögzíteni az út egyéb paramétereit is mint pl.: kezdő és végpont koordinátái, mozgással töltött idő, megtett emelkedő, legalacsonyabb és legmagasabb pont, átlag sebesség, maximum sebesség. Ezek a jellemzők lényegesen pontosabb leírást adnak egy-egy útvonalról, tárolásukkal könnyen nyomon követhető a személyes fejlődés, kitűzhetőek heti, havi, éves célok. Az útvonal paramétereinek nyomon követése, struktúrája és tárolása megvalósításonként változó, azonban a cél mindig ugyanaz: minél több jellemző meghatározása a lehető legrészletesebb módon.
 
 \subsubsection{Közösségi funkciók} 
-A kerékpáros útvonalakat nyomon követő mobil alkalmazások elterjedésével egy új tendencia jelent meg; egyre többször figyelhető meg valamilyen jellegű közösségi funkció megvalósítása az alkalmazáson belül, amik nagy népszerűségnek örvendenek az alkalmazást használók körében. Ezen funkciók nagyban különbözhetnek, általánosságban lehetőség van az alkalmazást használó ismerősök megtalálására, megtett útvonalak megosztására illetve valamilyen formában tetszésnyilvánítás / elismerés adására. Ezeken kívül általában megjelenik valamilyen ösztönzés, lelkesítés ami segíthet a teljesítmény javításában, a kitűzött célok elérésében. A Strava esetében ez a szegmensek formájában jelenik meg, amik lényegében rövid, maximum néhány száz méteres útvonalak, általában valamilyen szempontból nehezebb szakaszok (pl.: emelkedő). Ezen szegmensek teljesítésével a felhasználó automatikusan felkerül több rangsorra is (globális, erre az évre vonatkozó, nem és korcsoport alapján lebontott) ahol lehetősége van ismerősökkel és ismeretlenekkel vetélkedni ezzel felébresztve a versenyszellemet. 
+A kerékpáros útvonalakat nyomon követő mobil alkalmazások elterjedésével egy új tendencia jelent meg; egyre többször figyelhető meg valamilyen jellegű közösségi funkció megvalósítása az alkalmazáson belül, amik nagy népszerűségnek örvendenek az alkalmazást használók körében. Ezen funkciók nagyban különbözhetnek, általánosságban lehetőség van az alkalmazást használó ismerősök megtalálására, megtett útvonalak megosztására illetve valamilyen formában tetszésnyilvánítás / elismerés adására. Ezeken kívül általában megjelenik valamilyen ösztönzés, lelkesítés ami segíthet a teljesítmény javításában, a kitűzött célok elérésében. A Strava esetében ez a szegmensek formájában jelenik meg, amik lényegében rövid, maximum néhány száz méteres útvonalak, általában valamilyen szempontból nehezebb szakaszok (pl.: emelkedő). Ezen szegmensek teljesítésével a felhasználó automatikusan felkerül több rangsorra is (globális, adott évre vonatkozó, nem és korcsoport alapján lebontott) ahol lehetősége van ismerősökkel és ismeretlenekkel vetélkedni ezzel felébresztve a versenyszellemet. 
 
 \subsubsection{Tervezés, becslés} 
-A kerékpáros alkalmazások fejlődésének következő lépcsőfoka az útvonalak tervezése és a teljesítmény becslése. Útvonalak tervezésére kevésbé kerékpár specifikus alkalmazások is lehetőség adnak mint például a Google Térkép de sok, kifejezetten kerékpárosoknak készült alkalmazásban is léteznek megvalósítások. A tervezés különböző szempontok alapján történhet: egyik fontos szempont a távolság (ez a legfontosabb amennyiben a cél az út minél gyorsabb megtétele A és B pont között), egy másik pedig a népszerűség szóval foglalható össze. Az utóbbi főleg akkor fontos ha a kerékpározásra nem közlekedés szerűen tekintünk hanem inkább mint sport, kikapcsolódás hiszen ilyenkor előrébb kerül a jogos felhasználói igény az olyan útvonalakra ahol szép környezetben, lehetőség szerint autós és gyalogos forgalomtól zavartalanul lehet biciklizni. Az útvonalak tervezéséhez szorosan kapcsolódik a teljesítmény, a várható idő meghatározása ami koránt sem egyszerű feladat. Ennek legalapvetőbb megoldása a Bike calculator által is megvalósított mérnöki, fizikai modell, ahol a teljesítmény tisztán a felszerelés és a megtenni kívánt út paraméterei alapján kerül kiszámításra
+A kerékpáros alkalmazások fejlődésének következő lépcsőfoka az útvonalak tervezése és a teljesítmény becslése. Útvonalak tervezésére kevésbé kerékpár specifikus alkalmazások is lehetőség adnak mint például a Google Térkép de sok, kifejezetten kerékpárosoknak készült alkalmazásban is léteznek megvalósítások. A tervezés különböző szempontok alapján történhet: egyik fontos szempont a távolság (ez a legfontosabb amennyiben a cél az út minél gyorsabb megtétele A és B pont között), egy másik pedig a népszerűség szóval foglalható össze. Az utóbbi főleg akkor fontos ha a kerékpározásra nem közlekedés szerűen tekintünk hanem inkább mint sport, kikapcsolódás hiszen ilyenkor előrébb kerül a jogos felhasználói igény az olyan útvonalakra ahol szép környezetben, lehetőség szerint autós és gyalogos forgalomtól zavartalanul lehet kerékpározni. Az útvonalak tervezéséhez szorosan kapcsolódik a teljesítmény, a várható idő meghatározása ami koránt sem egyszerű feladat. Ennek legalapvetőbb megoldása a Bike calculator által is megvalósított mérnöki, fizikai modell, ahol a teljesítmény tisztán a felszerelés és a megtenni kívánt út paraméterei alapján kerül kiszámításra
 
 
 \subsubsection{Tervezés, becslés - egyéni teljesítmény alapján} 
-Az útvonal tervezés és a várható teljesítmény becslésének továbbfejlesztésének, pontosításának alapjául az eddig megtett útvonalak és az elért eredmények szolgálhatnának, ez azonban egy olyan terület ahol még nem sok megoldás született. Ide sorolható a Strava által fejlesztett útvonal tervező, ahol a várható idő becsléséhez alapul veszi a bejelentkezett felhasználó elmúlt 4 heti teljesítményét, és míg ez egy jó kezdeményezés a valóságban nem mindig szolgál pontosabb információval mint egy egyszerű, fizikai összefüggéseken alapuló általános modell. Megnehezíti a pontos becslések készítését hogy egy adott felhasználó sokszor kevés adattal rendelkezik amelyek nem elég változatosak egy új útvonal esetén várható teljesítmény megbecsléséhez.
+Az útvonal tervezés és a várható teljesítmény becslésének továbbfejlesztésének, pontosításának alapjául az eddig megtett útvonalak és az elért eredmények szolgálhatnának, ez azonban egy olyan terület ahol még nem sok megoldás született. Ide sorolható a Strava által fejlesztett útvonal tervező, ahol a várható idő becsléséhez alapul veszi a bejelentkezett felhasználó elmúlt 4 heti teljesítményét, és míg ez egy jó kezdeményezés a valóságban nem mindig szolgál pontosabb információval mint egy egyszerű, fizikai összefüggéseken alapuló általános modell. Megnehezíti a pontos becslések készítését hogy egy adott felhasználó sokszor kevés adattal rendelkezik amelyek nem elég változatosak egy új útvonal esetén várható teljesítmény megbecsléséhez.\\[12pt]
+
+\noindent
+A fenti csoportok összefoglalása a vizsgált alkalmazásokra:
+\begin{table}[!h]
+	\resizebox{\textwidth}{!}{%
+	\begin{tabular}{c|c|c|c|c|}
+		\cline{2-5}
+		\multicolumn{1}{l|}{} & 
+		\multicolumn{1}{l|}{\textbf{Bike calculator}} & 
+		\multicolumn{1}{l|}{\textbf{Strava}} & 
+		\multicolumn{1}{l|}{\textbf{Endomondo}} & 
+		\multicolumn{1}{l|}{\textbf{Best Bike Split}} \\ \hline
+		
+		\multicolumn{1}{|c|}{
+			\begin{tabular}
+				[c]{@{}c@{}}Útvonal \\ rögzítés
+		\end{tabular}} & 
+		{\color[HTML]{FE0000} $\boldsymbol{\times}$} & {\color[HTML]{009901} \textbf{\checkmark}} & {\color[HTML]{009901} \textbf{\checkmark}} & {\color[HTML]{009901} \textbf{\checkmark}}             \\ \hline
+		\multicolumn{1}{|l|}{
+			\begin{tabular}
+				[c]{@{}l@{}}Közösségi \\ funkciók
+		\end{tabular}} &
+		{\color[HTML]{FE0000} \textbf{$\boldsymbol{\times}$}} & {\color[HTML]{009901} \textbf{\checkmark}} & {\color[HTML]{009901} \textbf{\checkmark}} & {\color[HTML]{FE0000} $\boldsymbol{\times}$}         \\ \hline
+		
+		\multicolumn{1}{|c|}{
+			\begin{tabular}
+				[c]{@{}c@{}}Tervezés\\ (általános)
+		\end{tabular}} & 
+		{\color[HTML]{009901} \textbf{\checkmark}} & {\color[HTML]{009901} \textbf{\checkmark}} & {\color[HTML]{009901} \textbf{\checkmark}} & {\color[HTML]{009901} \textbf{\checkmark}}     \\ \hline
+		
+		\multicolumn{1}{|c|}{
+			\begin{tabular}
+				[c]{@{}c@{}}Tervezés\\ (egyéni)
+		\end{tabular}}   &
+		{\color[HTML]{FE0000} $\boldsymbol{\times}$} & {\color[HTML]{009901} \textbf{\checkmark}} & {\color[HTML]{FE0000} $\boldsymbol{\times}$} & {\color[HTML]{009901} \textbf{\checkmark}}             \\ \hline
+	\end{tabular}
+	}
+\end{table}
 
 
+\subsubsection{Célkitűzés}
 Ezen 4 fő csoport közül az első három által meghatározott problémákra, igényekre mára már rengeteg, változatos módon megvalósított megoldás létezik, így ezeknek a tárgyalásától a továbbiakban eltekintünk. Azonban az utolsó probléma, a felhasználó egyéni teljesítményének figyelembe vétele egy nyitott terület, ahova nem sokan merészkedtek még. \TODO ez a szakdoga célja  
  
 
@@ -184,25 +224,50 @@ Ebben a fejezetben találhatóak meg a szakdolgozat során használt gépi tanul
 A regresszió egy felügyelt gépi tanulási módszer amely folytonos kimenetet generál. A tanuláshoz szükség van a bemeneti adathalmazra valamint a helyes kimeneti értékekre, amik elemzésével az algoritmus képes új bemeneti adatpárokra kimenetet generálni.
 
 \subsubsection{Ridge Regression}
+A Ridge regresszió kitűnően alkalmas a Legkisebb négyzetek módszerének problémáinak való kiküszöbölésére. 
+A módszer matematikailag:
 
-%\TODO szöveges kifejtés
-%A ridge regresszió a legkisebb négyzetek módszerének néhány problémájával foglalkozik, \TODO normalizálva az együtthatók mértékét. Az együtthatók
-A Ridge regresszió sajátossága hogy a túlilleszkedés kiküszöbölésének érdekében módosítja a költség funkció számítását. Ehhez egy "büntető" tényezőt, egy plusz súlyt használ, ezzel ellensúlyozva a hibákat.
 $$ \min_{w} \norm{Xw-y}_2^2 + \alpha \norm{w}_2^2$$ 
-Itt $\alpha \geq 0 $ egy komplexitási paraméter ami a csökkenés mértékét befolyásolja: minél nagyobb az $\alpha$ értéke annál gyorsabb a csökkenés.
 
-Az algoritmus bonyolultsága egy $n \times p$ méretű $X$ mátrix esetén $O(np^2)$ amennyiben $n \geq p$. 
+ahol $\alpha \geq 0$ komplexitási paraméter. Ez a paraméter befolyásolja a csökkenés (\textit{shrinkage}) mértékét: minél nagyobb az $\alpha$ annál meredekebb a csökkenés. 
+
+Érdemes használni mikor:
+\begin{itemize}
+	\item a magyarázó változók (jellemzők) száma meghaladja a vizsgálatok (adatsorok) számát egy adathalmazban
+	\item a magyarázó változók (jellemzők) között korreláció figyelhető meg, tehát mikor az adathalmaz multikollineáris
+\end{itemize}
+
+Regularizáció: a Ridge regresszió L2 típusú regularizációt valósít meg. \TODO L2 leírása
+
+
+Ridge VS Legkisebb négyzetek módszere: a legkisebb négyzetek módszere nem különböztet meg "fontos" és "kevésbé fontos" jellemzőket, így magas jellemzőszám és kevés adatsor esetén túlilleszkedést eredményez, valamint nehezen kezel multikollineáris adathalmazt. A Ridge regresszió kiküszöböli ezeket a problémákat ugyanis pontosan elegendő torzítást (\textit{bias}) használ ahhoz, hogy a becslések ésszerűen megbízhatóak legyenek.
+
+
 
 \subsubsection{Lasso}
-A \textit{Least Absolute Shrinkage and Selection Operator} angol kifejezés rövidítése. 
-%\TODO szöveges kifejtés
+A \textit{Least Absolute Shrinkage and Selection Operator} angol kifejezés rövidítése. Ez egy lineáris modell amely ritka együtthatókat (\textit{sparse coefficients}) becsül. Hasznos lehet tömörített érzékelés (\textit{compressed sensing}) esetén mivel a kevesebb magyarázó változót tartalmazó megoldások felé tendál, így effektíve csökkentve az eredményt befolyásoló jellemzők számát. Matematikailag:
 
-$$ \min_{w}\frac{1}{2n_{samples}} \norm{Xw-y}_2^2 + \alpha\rho \norm{w}_1$$
+$$ \min_{w}\frac{1}{2n_{samples}} \norm{Xw-y}_2^2 + \alpha \norm{w}_1$$
+ahol $\alpha \geq 0$ konstans együttható az L1 regularizációt befolyásoló, csökkenés mértékét jelző paraméter. 
+\begin{itemize}
+	\item $\alpha = 0$ esetén egyetlen jellemző sem kerül elvetésre, gyakorlatilag egy lineáris regresszió
+	\item $\alpha$ növekedésével egyre több jellemző kerül elvetésre. Elméletileg $\alpha = \infty$ esetben minden jellemző elvetésre kerül
+	\item $\alpha$ növekedésével nő az elfogultság (\textit{bias}). Magas bias esetén alulilleszkedés figyelhető meg.
+	\item $\alpha$ csökkenésével nő a variancia (\textit{variance}). Magas variancia esetén túlilleszkedés figyelhető meg.
+\end{itemize}
 
-\subsubsection{Elastic Net}
-\TODO szöveges kifejtés
+A Lasso regresszió tehát támogatja a minél egyszerűbb, ritka (\textit{sparse}) modelleket. Jól használható multikollineáris adathalmaz esetén illetve modell szelekció automatizálásához (pl.: magyarázó változók kiválasztása).
 
-$$ \min_{w}\frac{1}{2n_{samples}} \norm{Xw-y}_2^2 + \alpha\rho \norm{w}_1 + \frac{\alpha(1-\rho)}{2} \norm{w}_2^2$$
+
+
+\subsubsection{Random Forest Regression}
+A Random Forest modell egy additív típusú modell amely a jellemzők közötti összefüggések feltárásához döntési fákat kombinál egy végső modellbe. Formálisabban:
+$$ g(x) = f_0(x) + f_1(x) + f_2(x) + \dots$$
+ahol a $g$ végleges modell az $f_i$ alapmodellek összessége. Minden $f_i$ egy döntési fa. A Random Forest érdekessége hogy az összes alapmodell egymástól függetlenül, a rendelkezésre álló adat különböző részhalmazait felhasználva kerül kialakításra.
+
+A módszer előnye a lineáris modellekkel szemben hogy képes a nem-lineáris összefüggéseket is megtalálni a magyarázó és a függő változók között.
+
+
 
 \subsubsection{MLPRegressor} \label{ssec:mlpregressor}
 Multi-layer Perceptron Regression, azaz mesterséges neuronokból felépülő többrétegű struktúrán, más néven egy neurális hálón alapuló regressziót valósít meg. Ez egy felügyelt tanulási algoritmus, tehát inputként a feature-ok egy mátrixát ($X$) valamint a hozzájuk tartozó helyes label-eket ($y$) várja. Ezen értékek alapján backpropagation-t használva a módszer folytonos értékek készletével tér vissza. Az MLPRegressor továbbá több kimenetű regressziót is támogat, így egy mintához több output érték is rendelhető.

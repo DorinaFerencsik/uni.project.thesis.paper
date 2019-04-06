@@ -18,7 +18,7 @@ A  parancs segítségével a JSON struktúra (jsonData) könnyen átalakítható
 \begin{python}
 import pandas
 
-jsonData = pandas.read_json("2019_02_08_10h.json", type='series')
+jsonData = pandas.read_json("2019_03_20_10h.json", type='series')
 cleanData = []
 for u in userData:
   if userData[u]['connectedToStrava'] == True:
@@ -44,7 +44,58 @@ A fenti parancs segítségével a JSON struktúra (jsonData) könnyen átalakít
 \SubSection{Adattisztítás}
 A megfelelő adatstruktúra kialakítása után a következő lépés az adatok megtisztítása. Ez a lépés azért szükséges mert a legfigyelmesebben gyűjtött adathalmaz is tartalmazhat rossz értékeket illetve előfordulhat hogy több helyen hiányzik a valódi érték. Ezeknek a hibáknak a megtalálása és kijavítása több fázisból áll.
 
-\csvautotabular{adat/rawDataDescription.csv}
+%\csvautotabular{adat/rawDataDescription.csv}
+A megtaláláshoz első lépés az adatok áttekintése: NULL értékek vizsgálata, egyes jellemzők eloszlásának megtekintése, minimum, maximum és a kvantilisek összehasonlítása. Ehhez nyújt segítséget a \myref{tab:rawDataDescription} táblázat amely a numerikus oszlopokról készült általános jellemzést összegzi. 
+\begin{table}[!h]
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{l|l|l|l|l|l|l|l|l|}
+			\cline{2-9}
+			& \multicolumn{1}{c|}{\textbf{Count}} & \multicolumn{1}{c|}{\textbf{Mean}} & \multicolumn{1}{c|}{\textbf{STD}} & \multicolumn{1}{c|}{\textbf{Min}} & \multicolumn{1}{c|}{\textbf{0.25}} & \multicolumn{1}{c|}{\textbf{0.50}} & \multicolumn{1}{c|}{\textbf{0.75}} & \multicolumn{1}{c|}{\textbf{Max}} \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{age\_group}}  & 10014  & 1.01   & 0.48   & 0.0   & 1.0   & 1.0   & 1.0   & 2.0   \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{average\_speed}}  & 10014   & 24.25   & 653.31  & 0.0  & 4.96   & 5.73  & 6.47  & 36100.0  \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{average\_watts}}  & 1848  & 163.0  & 49.51  & 0.0  & 139.10  & 161.85  & 180.85 & 482.6 \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{distance}} & 10014  & 26153.09 & 29465.23 & 0.0   & 7444.83 & 13751.25 & 34587.2  & 436806.0  \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{elapsed\_time}} & 10014 & 5845.88 & 19296.2  & 0.0  & 1648.00  & 3020.0  & 7343.0  & 1806211.0  \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{elev\_high}} & 9845 & 282.1 & 272.66 & -71.2  & 162.2  & 229.4  & 296.4 & 12103.0  \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{elev\_low}}  & 9844  & 131.99 & 68.68  & -500.0  & 103.1 & 130.0 & 148.3  & 1484.0 \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{kilojoules}} & 1765 & 1295.76 & 756.06 & 0.0 & 728.7 & 1236.7 & 1745.4  & 5928.8   \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{max\_speed}} & 10014  & 12.14 & 3.99  & 0.0  & 9.6 & 11.6  & 14.48  & 122.7        \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{max\_watts}} & 546 & 630.95  & 244.34  & 115.0 & 502.0 & 603.0  & 708.0 & 2428.0   \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{moving\_time}}  & 10014  & 4543.18  & 5016.52  & 0.0 & 1442.0  & 2451.0  & 6109.0  & 90983.0  \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{pr\_count}}  & 1959  & 1.48  & 3.2 & 0.0 & 0.0 & 0.0  & 2.0   & 50.0       \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{resource\_state}}  & 1959  & 2.0  & 0.0  & 2.0  & 2.0  & 2.0  & 2.0  & 2.0                \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{\begin{tabular}[c]{@{}l@{}}total\_elevation\\ \_gain\end{tabular}}}  & 10014  & 278.7  & 428.88  & 0.0  & 27.5   & 85.2 & 361.8   & 4416.8   \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{\begin{tabular}[c]{@{}l@{}}weighted\_average\\ \_watts\end{tabular}}} & 546  & 188.86  & 30.35  & 5.0   & 176.25  & 195.0  & 208.75  & 246.0  \\ \hline
+			\multicolumn{1}{|l|}{
+				\textbf{workout\_type}}  & 4039    & 9.74   & 1.85   & 0.0  & 10.0  & 10.0  & 10.0    & 12.0 \\ \hline
+		\end{tabular}%
+	}
+\caption{Nyers adathalmaz leírás}
+\label{tab:rawDataDescription}
+\end{table}
+
+A táblázat oszlopainak a jelentése:
+\begin{itemize}
+	\item Count: adott jellemző nem NULL értékeinek darabszámát adja meg
+	\item Mean: adott jellemző átlaga
+	\item STD (Standard Deviation): adott jellemző szórása
+\end{itemize}
+
 
 
 \subsubsection{NULL értékek}
@@ -84,27 +135,22 @@ A kiugró értékek megtalálása egy alapvető módszer került felhasználásr
 \[  \frac{x - \overline{F}}{\sigma} > 2.5\]
 teljesül, ahol $\overline{F}$ az $F$ jellemző átlaga, $\sigma$ pedig $F$ szórása.
 
-Az alábbiakban a különböző jellemzők kiugró érték vizsgálatának jellemzése található.
+Az alábbiakban a különböző jellemzők kiugró érték vizsgálatának részletes leírása található.\\[6pt]
 
-\textbf{average\_speed (átlagsebesség):}
+\textbf{Átlagsebesség (average\_speed):}
+ez a jellemző m/s-al adja meg az útvonal átlagsebességét. A fenti módszer 10 kiugró értéket talált amik 2182 m/s (7855.2 km/h) és 28290 ms/s (101844.0 km/h) közé esnek. Ekkora sebesség elérése nyilvánvalóan lehetetlen kerékpárral, eredetük az adatsorok megvizsgálása után leszűkíthető a mozgási idő (moving\_time) jellemző mérésének a hiányára / hibájára. Az átlagsebesség számítása ugyanis a távolság és a mozgási idő hányadosaként kerül kiszámításra és a vizsgált kiugró értékeknél a mozgási idő mindenhol 1 másodperc míg a távolság 10 km fölött van. Ezen adatok javítása nem tűnik megvalósíthatónak. Eldobásuk után az adathalmaz 10004 utat tartalmaz.\\[6pt]
 
-Ez a jellemző m/s-al adja meg az útvonal átlagsebességét. A fenti módszer 10 kiugró értéket talált amik 2182 m/s (7855.2 km/h) és 28290 ms/s (101844.0 km/h) közé esnek. Ekkora sebesség elérése nyilvánvalóan lehetetlen kerékpárral, eredetük az adatsorok megvizsgálása után leszűkíthető a mozgási idő (moving\_time) jellemző mérésének a hiányára / hibájára. Az átlagsebesség számítása ugyanis a távolság és a mozgási idő hányadosaként kerül kiszámításra és a vizsgált kiugró értékeknél a mozgási idő mindenhol 1 másodperc míg a távolság 10 km fölött van. Ezen adatok javítása nem tűnik megvalósíthatónak. Eldobásuk után az adathalmaz 10004 utat tartalmaz.
+\textbf{Távolság (distance):}
+a distance jellemző méterben megadva tárolja az egy-egy útvonal során megtett távolságot. Kiugró érték vizsgálat során 313 értéket talált a módszer, amik között a legkisebb értéke 99915.1 méter azaz közel 100 km. Ezek az adatsorok azonban minden más szempontból helyes értékeket tartalmaznak és valójában a 100 km-s utak sem lehetetlenek. Ezek az értékek nem kerültek törlésre az adathalmazból azonban a későbbiek során érdemes lehet a hasonlóan hosszú utakat külön kezelni\\[6pt]
 
-\textbf{distance (távolság):}
+\textbf{Legmagasabb tengerszint feletti pont (elev\_high):}
+az elev\_high jellemző vizsgálata során 61 kiugró érték jelzett a módszer amelyek 976.6 méter és 12103.0 méter közé esnek. A 12103 méter egyértelműen lehetetlen, a többi érték pedig vele együtt elvetésre kerül. Ezen adatsorok eldobása után az adathalmaz 9943 útvonalat tartalmaz\\[6pt]
 
-A distance jellemző méterben megadva tárolja az egy-egy útvonal során megtett távolságot. Kiugró érték vizsgálat során 313 értéket talált a módszer, amik között a legkisebb értéke 99915.1 méter azaz közel 100 km. Ezek az adatsorok azonban minden más szempontból helyes értékeket tartalmaznak és valójában a 100 km-s utak sem lehetetlenek. Ezek az értékek nem kerültek törlésre az adathalmazból azonban a későbbiek során érdemes lehet a hasonlóan hosszú utakat külön kezelni
+\textbf{Legnagyobb sebesség (max\_speed)}
+a max\_speed az útvonal során mért maximális sebességet jelzi m/s mértékegységben. Vizsgálata során a használt módszer 218 kiugró értéket talált. Ezek az értékek két intervallumra oszthatóak fel. 0.0 m/s - 2.1 m/s és 22.1 m/s - 122.7 ms azaz 0.0 km/h - 7.56 km/h és 79.56 km/h - 441.72 km/h. Ezek olyan adatok amelyek kilógnak az adathalmazból, sok közülük lehetetlen / értelmezhetetlen. Ezen adatsorok eldobása után az adathalmaz 9725 útvonalat tartalmaz.\\[6pt]
 
-\textbf{elev\_high (legmagasabb tengerszint feletti pont):}
-
-Az elev\_high jellemző vizsgálata során 61 kiugró érték jelzett a módszer amelyek 976.6 méter és 12103.0 méter közé esnek. A 12103 méter egyértelműen lehetetlen, a többi érték pedig vele együtt elvetésre kerül. Ezen adatsorok eldobása után az adathalmaz 9943 útvonalat tartalmaz
-
-\textbf{max\_speed (legnagyobb sebesség)}
-
-A max\_speed az útvonal során mért maximális sebességet jelzi m/s mértékegységben. Vizsgálata során a használt módszer 218 kiugró értéket talált. Ezek az értékek két intervallumra oszthatóak fel. 0.0 m/s - 2.1 m/s és 22.1 m/s - 122.7 ms azaz 0.0 km/h - 7.56 km/h és 79.56 km/h - 441.72 km/s. Ezek olyan adatok amelyek kilógnak az adathalmazból, sok közülük lehetetlen / értelmezhetetlen. Ezen adatsorok eldobása után az adathalmaz 9725 útvonalat tartalmaz.
-
-\textbf{moving\_time (mozgási idő)}
-
-A moving\_time jellemző a tényleges mozgással töltött időt tárolja másodpercben megadva. A jellemző vizsgálata során 276 érték bizonyult kiugrónak amelyek közül a legkisebb értéke 16814 másodperc azaz nagyjából 4 óra és 40 perc. Ezek az értékek összefüggnek a távolság (distance) jellemző vizsgálata során talált kiugró értékekkel, így egyenlőre az adathalmaz része marad, a későbbiek során azonban külön lesz kezelve.
+\textbf{Mozgási idő (moving\_time)}
+a moving\_time jellemző a tényleges mozgással töltött időt tárolja másodpercben megadva. A jellemző vizsgálata során 276 érték bizonyult kiugrónak amelyek közül a legkisebb értéke 16814 másodperc azaz nagyjából 4 óra és 40 perc. Ezek az értékek összefüggnek a távolság (distance) jellemző vizsgálata során talált kiugró értékekkel, így egyenlőre az adathalmaz része marad, a későbbiek során azonban külön lesz kezelve.
 
 
 A kiugró értékek megtalálására használt módszeren felül definiálásra került néhány szabály amik segítségével ki lehet szűrni az egyéb helytelen adatokat. Ezek alapján elvetésre kerülnek azok az adatsorok ahol:
@@ -122,26 +168,15 @@ A fentebbi adatsorok eldobása után összességében 9603 útvonalat tartalmaz�
 \SubSection{Adatok áttekintése}
 A további feldolgozás illetve a tényleges gépi tanulási algoritmusok felhasználása előtt érdemes kicsit mélyrehatóbban tanulmányozni az adathalmazt, felfedezni a mintákat és összefüggéseket. 
 
-\begin{figure}[h!]
-	\includegraphics[width=\linewidth]{kepek/frequencyByAgeAndWeekdays.png}
-	\caption{Activity frequency by days of week.}
-	\label{fig:frequencyByWeekdays}
+
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{kepek/FrequencyAndDistanceOnWeekDays.png}
+	\caption{Átlagos távolság és útvonal gyakoriság a hét napjain}
+	\label{fig:distanceAndFrequencyByWeekdays}
 \end{figure}
 
-Szöveg a fenti képről....
-
-Blablabla
-
-Még mindig.....
-
-
-
-
-\begin{figure}[h!]
-	\includegraphics{kepek/frequencyByAgeAndDayparts.png}
-	\caption{Activity frequency by dayparts.}
-	\label{fig:frequencyByDayparts}
-\end{figure}
+A \myref{fig:distanceAndFrequencyByWeekdays} ábrán két grafikon jellemzi az útvonalak eloszlását a hét napjai szerint. A bal oldali gráfon az átlagosan megtett távolságot, a jobb oldali pedig az útvonalak darabszámának eloszlását jelzi, korcsoportok szerint lebontva.
 
 
 Szöveg a fenti képről....
@@ -151,33 +186,14 @@ Blablabla
 Még mindig.....
 
 
-\begin{figure}[h!]
-	\includegraphics[width=\linewidth]{kepek/frequencyByAgeAndWeekdays.png}
-	\caption{Activity frequency by days of week.}
-	\label{fig:frequencyByWeekdays}
-\end{figure}
-
-Szöveg a fenti képről....
-
-Blablabla
-
-Még mindig.....
-
-
-
-
-\begin{figure}[h!]
-	\includegraphics{kepek/frequencyByAgeAndDayparts.png}
-	\caption{Activity frequency by dayparts.}
-	\label{fig:frequencyByDayparts}
+\begin{figure}[!h]
+	\includegraphics[width=\linewidth]{kepek/FrequencyAndDistanceOnDayparts.png}
+	\caption{Átlagos távolság és útvonal gyakoriság napszakok szerint}
+	\label{fig:distanceAndFrequencyByDayparts}
 \end{figure}
 
 
-Szöveg a fenti képről....
 
-Blablabla
-
-Még mindig.....
 
 
 
@@ -188,9 +204,9 @@ Még mindig.....
 \subsubsection{One-hot encoding}
 A kiugró értékek kezelése és a adathalmaz összefüggéseinek vizsgálata után a következő lépés a one-hot encoding. Az eljárás lényege hogy egy kategória alapú jellemzőt több (a kategóriák számának megfelelő) oszlopra bont szét, ahol az egyes oszlopokban, jellemzőkben 1-es szerepel amennyiben az adatsor abba az adott kategóriába sorolható, 0 egyébként. Ennek az előnye hogy kiküszöböli a kategóriák sorszámmal történő jelzésének távolságát. Például egy korcsoportot tároló jellemző esetén nem biztos hogy helyes feltételezni hogy a 0. és a 2. kategória (csoport) között 2 távolság van. A one hot encoding természetesen folytonos változók esetén nem értelmezhető és kategoriális jellemzőkre sem mindig érdemes alkalmazni.
 
-A szakdolgozathoz használt adathalmaz esetén 3+1 jellemző kerül one-hot encode-olásra: age\_group (korcsoport), workout\_tpye, start\_date\_local és a training.
+A szakdolgozathoz használt adathalmaz esetén 3+1 jellemző kerül one-hot encode-olásra: age\_group (korcsoport), workout\_tpye, start\_date\_local és a training.\\[6pt]
 
-\textbf{age\_group:} a sportoló korcsoportját jelzi, értékei egy három elemű halmazból kerülhetnek ki: \{0,1,2\} ahol 0 a [18,30], 1 a [31,45] 2 pedig a [46,$+\infty$] korcsoportokba való tartozást jelenti. One-hot encoding során az eredeti jellemzőből 3 oszlop készül, végül az eredeti törlésre kerül az adathalmazból.
+\textbf{age\_group:} a sportoló korcsoportját jelzi, értékei egy három elemű halmazból kerülhetnek ki: \{0, 1, 2\} ahol 0 a [18,30], 1 a [31,45], 2 pedig a [46,$+\infty$) korcsoportokba való tartozást jelenti. One-hot encoding során az eredeti jellemzőből 3 oszlop készül, végül az eredeti törlésre kerül az adathalmazból.
 \begin{programreszlet}
 Python parancsok részletezése
 \begin{python}
@@ -199,14 +215,16 @@ rawData.drop(columns=['age_group'], inplace=True)
 rawData = rawData.join(ageOneHot)
 \end{python}
 \end{programreszlet}
-A kódban megadott prefix paraméter segítségével az új jellemzők nevei: age\_0.0, age\_1.0, age\_2.0
+A kódban megadott prefix paraméter segítségével az új jellemzők nevei: age\_0.0, age\_1.0, age\_2.0\\[6pt]
 
 
 \textbf{workout\_tpye:} 
 
 \begin{programreszlet}
+	\TODO szöveg
 \begin{python}
-workoutTypeOneHot = pandas.get_dummies(rawData['workout_type'], prefix='workout_type')
+workoutTypeOneHot = pandas.get_dummies(rawData['workout_type'],
+				       prefix='workout_type')
 rawData.drop(columns='workout_type', inplace=True)
 rawData = rawData.join(workoutTypeOneHot)
 \end{python}
@@ -216,7 +234,7 @@ rawData = rawData.join(workoutTypeOneHot)
 \textbf{start\_date\_local:} a jellemző az aktivitás kezdeti idejét tárolja, a sportoló saját időzónája szerint, ÉÉÉÉ-MM-DD HH:MM:SS formátumban. Dátum mezők azonban nem értelmezhetőek gépi tanulási algoritmusokkal így a jellemző átalakítása szükségszerű volt. A dátumból alapvetően 2 féle új jellemző kerül kinyerésre, majd ezek külön kerülnek one-hot encode-olásra
 
 \begin{programreszlet}
-Az aktivitás kezdetének dátumából kinyerhető hogy a hét melyik napján történt az aktivitás. Ennek az információnak a kinyerését és one-hot encode-olását az alábbi kód végzi
+Az aktivitás kezdetének dátumából kinyerhető hogy a hét melyik napján történt az aktivitás. Ezen információ kinyerését és one-hot encode-olását az alábbi kód végzi
 \begin{python}
 rawData['day_of_week'] = rawData['start_date_local'].dt.day_name()
 weekDayOneHot = pandas.get_dummies(rawData['day_of_week'], 
@@ -227,7 +245,7 @@ rawData = rawData.join(weekDayOneHot)
 \end{programreszlet}
 
 \begin{programreszlet}
-Az aktivitás kezdetének időpontjából kinyerhető hogy melyik napszakban kezdődött az aktivitás. Ennek az információnak a kinyerését és one-hot encode-olását az alábbi kód végzi
+Az aktivitás kezdetének időpontjából kinyerhető hogy melyik napszakban kezdődött az aktivitás. Ezen információ kinyerését és one-hot encode-olását az alábbi kód végzi
 \begin{python}
 rawData['daypart'] = rawData['start_date_local'].apply(lambda row: 
 						 timeToPartOfDay(row))
@@ -238,55 +256,55 @@ rawData = rawData.join(dayPartOneHot)
 
 Ahol a timeToPartOfDay függvény a start\_date\_local jellemző minden adattagjára külön hívódik meg. Ez a függvény szubjektíven oszt fel egy napot hat napszakra \myaref{fig:daypartsClock} ábra szerint
 
-\begin{figure}[!h]
-\centering
-\begin{tikzpicture}[line cap=rect,line width=3pt]
-\filldraw[fill=chart5, draw=chart5, line width=1pt] (0,0)-- +(45:2) arc (45:0:2); %hajnal
-\filldraw[fill=chart0, draw=chart0, line width=1pt] (0,0)-- +(120:2) arc (120:45:2); %éjszaka
-\filldraw[fill=chart1, draw=chart1, line width=1pt] (0,0)-- +(180:2) arc (180:120:2); %este
-\filldraw[fill=chart2, draw=chart2, line width=1pt] (0,0)-- +(270:2) arc (270:180:2); %délután
-\filldraw[fill=chart3, draw=chart3, line width=1pt] (0,0)-- +(315:2) arc (315:270:2); %délelőtt
-\filldraw[fill=chart4, draw=chart4, line width=1pt] (0,0)-- +(360:2) arc (360:315:2); %reggel
-
-\node[font=\small] at (90:2.36cm) {\textsf{Éjszaka}};
-\node[font=\small] at (20:2.7cm) {\textsf{Hajnal}};
-\node[font=\small] at (340:2.7cm) {\textsf{Reggel}};
-\node[font=\small] at (305:2.6cm) {\textsf{Délelőtt}};
-\node[font=\small] at (215:2.7cm) {\textsf{Délután}};
-\node[font=\small] at (155:2.6cm) {\textsf{Este}};
-
-\draw (0,0) circle [radius=2cm];
-
-\foreach \angle [count=\xi] in {75,60,...,-270}
-{
-	\draw[line width=1pt] (\angle:1.8cm) -- (\angle:2cm);
-	%\node[font=\small] at (\angle:1.36cm) {\textsf{\xi}};
-}
-\foreach \angle [count=\xi] in {0,45,90,135,180,225,270,315}
-{
-	\draw[line width=2pt] (\angle:1.6cm) -- (\angle:2cm);
-}
-\draw (0,0) -- (120:0.8cm);
-\draw (0,0) -- (90:1cm);
-\node[font=\small] at (0:1.36cm) {\textsf{6}};
-\node[font=\small] at (45:1.36cm) {\textsf{3}};
-\node[font=\small] at (90:1.36cm) {\textsf{0}};
-\node[font=\small] at (135:1.30cm) {\textsf{21}};
-\node[font=\small] at (180:1.36cm) {\textsf{18}};
-\node[font=\small] at (225:1.36cm) {\textsf{15}};
-\node[font=\small] at (270:1.36cm) {\textsf{12}};
-\node[font=\small] at (315:1.36cm) {\textsf{9}};
-
-
-%\filldraw[line color=gray!40 ] -- +(45:2) arc (45:-45:2);
-\end{tikzpicture}
-	\caption{Napszakok kialakítása.}
-\label{fig:daypartsClock}
-\end{figure}
 \end{programreszlet}
 
+\begin{figure}[!h]
+	\centering
+	\begin{tikzpicture}[line cap=rect,line width=3pt]
+	\filldraw[fill=chart5, draw=chart5, line width=1pt] (0,0)-- +(45:2) arc (45:0:2); %hajnal
+	\filldraw[fill=chart0, draw=chart0, line width=1pt] (0,0)-- +(120:2) arc (120:45:2); %éjszaka
+	\filldraw[fill=chart1, draw=chart1, line width=1pt] (0,0)-- +(180:2) arc (180:120:2); %este
+	\filldraw[fill=chart2, draw=chart2, line width=1pt] (0,0)-- +(270:2) arc (270:180:2); %délután
+	\filldraw[fill=chart3, draw=chart3, line width=1pt] (0,0)-- +(315:2) arc (315:270:2); %délelőtt
+	\filldraw[fill=chart4, draw=chart4, line width=1pt] (0,0)-- +(360:2) arc (360:315:2); %reggel
+	
+	\node[font=\small] at (90:2.36cm) {\textsf{Éjszaka}};
+	\node[font=\small] at (20:2.7cm) {\textsf{Hajnal}};
+	\node[font=\small] at (340:2.7cm) {\textsf{Reggel}};
+	\node[font=\small] at (305:2.6cm) {\textsf{Délelőtt}};
+	\node[font=\small] at (215:2.7cm) {\textsf{Délután}};
+	\node[font=\small] at (155:2.6cm) {\textsf{Este}};
+	
+	\draw (0,0) circle [radius=2cm];
+	
+	\foreach \angle [count=\xi] in {75,60,...,-270}
+	{
+		\draw[line width=1pt] (\angle:1.8cm) -- (\angle:2cm);
+		%\node[font=\small] at (\angle:1.36cm) {\textsf{\xi}};
+	}
+	\foreach \angle [count=\xi] in {0,45,90,135,180,225,270,315}
+	{
+		\draw[line width=2pt] (\angle:1.6cm) -- (\angle:2cm);
+	}
+	\draw (0,0) -- (120:0.8cm);
+	\draw (0,0) -- (90:1cm);
+	\node[font=\small] at (0:1.36cm) {\textsf{6}};
+	\node[font=\small] at (45:1.36cm) {\textsf{3}};
+	\node[font=\small] at (90:1.36cm) {\textsf{0}};
+	\node[font=\small] at (135:1.30cm) {\textsf{21}};
+	\node[font=\small] at (180:1.36cm) {\textsf{18}};
+	\node[font=\small] at (225:1.36cm) {\textsf{15}};
+	\node[font=\small] at (270:1.36cm) {\textsf{12}};
+	\node[font=\small] at (315:1.36cm) {\textsf{9}};
+	
+	
+	%\filldraw[line color=gray!40 ] -- +(45:2) arc (45:-45:2);
+	\end{tikzpicture}
+	\caption{Napszakok kialakítása.}
+	\label{fig:daypartsClock}
+\end{figure}
 
-\textbf{trainer: } a trainer jellemző Igaz / Hamis értékekkel jelzi hogy egy adott aktivitás traineren, azaz gépen történt e, nem pedig tényleges kerékpáron. Ennek a jellemzőnek az átalakítása nem igazi one-hot encoding, inkább csak az Igaz / Hamis értékek átmappelése 1 / 0 értékekre.  
+\textbf{trainer: } a trainer jellemző Igaz / Hamis értékekkel jelzi hogy egy adott aktivitás traineren, azaz gépen történt e, nem pedig tényleges kerékpáron. Ennek a jellemzőnek az átalakítása nem igazi one-hot encoding, inkább csak az Igaz / Hamis értékek átalakítása 1 / 0 értékekre.  
 
 
 Az adattisztítás összes lépése után az adathalmaz szerkezete lényegesen megváltozik, új jellemzőket tartalmaz (one-hot encoding) valamint az eddigi jellemzők sok esetben más intervallumokba esnek (kiugró értékek kezelése).
@@ -317,18 +335,44 @@ Jellemzők:
 	\item weekday\_Saturday 
 	\item weekday\_Sunday 
 	\item weekday\_Thursday
-	\item weekday\_Tuesday', 
-	\item weekday\_Wednesday', 
-	\item daypart\_afternoon',
-	\item daypart\_dawn', 
-	\item daypart\_evening', 
-	\item daypart\_forenoon',
-	\item daypart\_morning', 
+	\item weekday\_Tuesday
+	\item weekday\_Wednesday 
+	\item daypart\_afternoon
+	\item daypart\_dawn
+	\item daypart\_evening
+	\item daypart\_forenoon
+	\item daypart\_morning
 	\item daypart\_night
 \end{itemize}
 
 
-az adathalmaz mentésre kerül a későbbi felhasználás megkönnyítésének céljából. A tisztított adatot a \textit{data\_advanced\_date.csv} fájl tartalmazza
+Az adathalmaz ezen a ponton mentésre kerül a későbbi felhasználás megkönnyítésének céljából. A tisztított adatot a \textit{data\_advanced\_\{date\}.csv} fájl tartalmazza.
+
+
+A tisztított adathalmaz numerikus oszlopainak összefoglalása a \myref{tab:cleanDataDescription} táblázatban található.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[!h]
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{l|l|l|l|l|l|l|l|l|}
+			\cline{2-9}
+			& \textbf{count} & \textbf{mean} & \textbf{std} & \textbf{min} & \textbf{0.25} & \textbf{0.50} & \textbf{0.75} & \textbf{max} \\ \hline
+			\multicolumn{1}{|l|}{\textbf{average\_speed}}                                                    & 9603           & 5.76          & 1.22         & 2.03         & 4.99          & 5.74          & 6.46          & 12.48        \\ \hline
+			\multicolumn{1}{|l|}{\textbf{distance}}                                                          & 9603           & 26140.85      & 29199.25     & 161.0        & 7451.3        & 13702.2       & 34599.1       & 436806.0     \\ \hline
+			\multicolumn{1}{|l|}{\textbf{elapsed\_time}}                                                     & 9603           & 5817.39       & 19632.69     & 61.0         & 1645.0        & 2998.0        & 7338.5        & 1806211.0    \\ \hline
+			\multicolumn{1}{|l|}{\textbf{elev\_high}}                                                        & 9603           & 270.73        & 166.61       & -71.2        & 162.3         & 229.4         & 290.5         & 956.0        \\ \hline
+			\multicolumn{1}{|l|}{\textbf{elev\_low}}                                                         & 9603           & 129.92        & 47.88        & -134.4       & 103.2         & 130.2         & 148.3         & 809.6        \\ \hline
+			\multicolumn{1}{|l|}{\textbf{max\_speed}}                                                        & 9603           & 12.22         & 3.24         & 2.3          & 9.7           & 11.6          & 14.4          & 22.0         \\ \hline
+			\multicolumn{1}{|l|}{\textbf{moving\_time}}                                                      & 9603           & 4509.68       & 4948.21      & 61.0         & 1440.0        & 2415.0        & 6099.0        & 90983.0      \\ \hline
+			\multicolumn{1}{|l|}{\textbf{\begin{tabular}[c]{@{}l@{}}total\_elevation\\ \_gain\end{tabular}}} & 9603           & 274.47        & 410.03       & 0.0          & 29.8          & 87.0          & 359.45        & 3896.8       \\ \hline
+		\end{tabular}%
+	}
+\caption{Tisztított adathalmaz numerikus oszlopai}
+\label{tab:cleanDataDescription}
+\end{table}
 
 
 % ADATTISZTITAS VEGE
@@ -343,15 +387,15 @@ az adathalmaz mentésre kerül a későbbi felhasználás megkönnyítésének c
 
 Az adathalmaz egy aktivitásra tekintve két különböző időtartamot különböztet meg: a mozgással töltött (moving\_time) és az összesen eltelt (elapsed\_time) időt, mindkettőt másodpercben mérve. A szakdolgozat során ennek a két időtartamnak a várható értékének a meghatározása az egyik cél gépi tanulási algoritmusokkal valamint ezen algoritmusoknak az összehasonlítása. Ennek a feladatnak a megoldásához a  \myref{subsec:regression} alfejezetben kifejtett regressziók adnak alapot.
 
-A kétféle időtartam alapvetően külön kezelve, egyenként kerül becslésre, erre kivételt fog jelenteni a \TODO href pontban részletezett MLPRegressor.
+A kétféle időtartam alapvetően külön kezelve, egyenként kerül becslésre, erre kivételt csak a \myref{ssec:mlpregressor} pontban részletezett MLPRegressor fog jelenteni.
 
 \subsubsection{Mozgási idő (moving\_time)}
 A tisztított adathalmaz beolvasása után szükséges kialakítani az $X$ és $y$ halmazokat amelyek a \TODO adatokat tartalmazzák. Az $y$ fogja tartalmazni a moving\_time jellemzőt míg $X$ minden mást ami alapján $y$ megbecsülhető. 
 
-A regressziók során nagyon fontos az adathalmaz skálázása, egy intervallumra hozása. Ennek fontossága akkor mutatkozik meg igazán mikor a különböző jellemzők nagyon eltérő intervallumokba esnek, például az average\_speed 2.03 és 12.478 értékek között mozog míg a distance 161 és 436806 között. Ezért a gépi tanulás során gyakran alkalmazott eljárás az adathalmaz normalizálása vagy standardizálása amely az összes jellemzőt egy szűk intervallumra vetíti le. A standardizálás elvégzésére a szakdolgozat során a scikit-learn csomag által biztosított StandardScaler függvény szolgált
+A regressziók során nagyon fontos az adathalmaz skálázása, egy intervallumra hozása. Ennek fontossága akkor mutatkozik meg igazán mikor a különböző jellemzők nagyon eltérő intervallumokba esnek, például az average\_speed 2.03 és 12.478 értékek között mozog míg a distance 161 és 436806 között. Ezért a gépi tanulás során gyakran alkalmazott eljárás az adathalmaz normalizálása vagy standardizálása amely az összes jellemzőt egy szűk intervallumra vetíti le. A standardizálás elvégzésére a szakdolgozat során a scikit-learn csomag által biztosított StandardScaler függvény szolgál.
 
 \begin{programreszlet}   
-szöveg
+Adathalmaz standardizálása
 
 \begin{python}
 from sklearn.preprocessing import StandardScaler
@@ -365,7 +409,7 @@ scaledData = pandas.DataFrame(scaledData, columns=names)
 \end{python}
 \end{programreszlet}
 
-\begin{programreszlet} A túltanulás elkerülése érdekében a tanító és cél adathalmazokat szét kell osztani tanító és tesztelő részekre. A regressziós modellek csak a tanító (train) adatokon fognak tanulni, ellenőrzésre, pontosság meghatározására pedig a teszt (test) adatok szolgálnak.  \TODO
+\begin{programreszlet} A túltanulás elkerülése érdekében a tanító és cél adathalmazokat szét kell osztani tanító és tesztelő részekre. A regressziós modellek csak a tanító (train) adatokon fognak tanulni, ellenőrzésre, pontosság meghatározására pedig a teszt (test) adatok szolgálnak. A tanító és teszt adathalmazok kialakítására a scikit-learn csomag álltal biztosított train\_test\_split függvény szolgál.
 \begin{python}
 from sklearn.model_selection import train_test_split
 	
