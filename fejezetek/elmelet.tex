@@ -223,12 +223,11 @@ Ebben a fejezetben találhatóak meg a szakdolgozat során használt gépi tanul
 %\TODO Regresszió fogalma, használhatósága
 A regresszió egy felügyelt gépi tanulási módszer amely folytonos kimenetet generál. A tanuláshoz szükség van a bemeneti adathalmazra valamint a helyes kimeneti értékekre, amik elemzésével az algoritmus képes új bemeneti adatpárokra kimenetet generálni.
 
-\subsubsection{Ridge Regression}
+\subsubsection{Ridge }
 A Ridge regresszió kitűnően alkalmas a Legkisebb négyzetek módszerének problémáinak való kiküszöbölésére. 
 A módszer matematikailag:
 
 $$ \min_{w} \norm{Xw-y}_2^2 + \alpha \norm{w}_2^2$$ 
-
 ahol $\alpha \geq 0$ komplexitási paraméter. Ez a paraméter befolyásolja a csökkenés (\textit{shrinkage}) mértékét: minél nagyobb az $\alpha$ annál meredekebb a csökkenés. 
 
 Érdemes használni mikor:
@@ -260,7 +259,7 @@ A Lasso regresszió tehát támogatja a minél egyszerűbb, ritka (\textit{spars
 
 
 
-\subsubsection{Random Forest Regression}
+\subsubsection{Random Forest }
 A Random Forest modell egy additív típusú modell amely a jellemzők közötti összefüggések feltárásához döntési fákat kombinál egy végső modellbe. Formálisabban:
 $$ g(x) = f_0(x) + f_1(x) + f_2(x) + \dots$$
 ahol a $g$ végleges modell az $f_i$ alapmodellek összessége. Minden $f_i$ egy döntési fa. A Random Forest érdekessége hogy az összes alapmodell egymástól függetlenül, a rendelkezésre álló adat különböző részhalmazait felhasználva kerül kialakításra.
@@ -330,8 +329,8 @@ A szakdolgozathoz készített weboldal fő célja hogy lekérje és tárolja azo
 \begin{itemize}
 	\item \textbf{average\_speed:} átlagsebesség (méter/másodperc)
 	\item \textbf{average\_watts:} átlagos erőkifejtés az útvonal során. Amennyiben nem biztosított az értéke -1
-	\item \textbf{commute:} egy tevékenység rögzítésekor lehetőség van azt 'ingázásként' felcímkézni, ezzel megjelölve hogy nem egy verseny vagy túra adat, hanem mindennapi, például munkába vagy boltba járási útvonal. Feltételezhető hogy ilyenkor az illető nem a minél jobb eredmények elérésére törekszik, inkább rutin szerűen, átlagos tempóban halad (Logikai érték, -1 amennyiben nem biztosított)
-	\item \textbf{device\_watts:} azt jelöli hogy az erőkifejtési adatokat tényleges mérőkészülék szolgáltatja vagy csupán becsült érték (logikai, Hamis amennyiben becsült érték) 
+	\item \textbf{commute:} egy tevékenység rögzítésekor lehetőség van azt 'ingázásként' felcímkézni, ezzel megjelölve hogy nem egy verseny vagy túra adat, hanem mindennapi, például munkába vagy boltba járási útvonal. Feltételezhető hogy ilyenkor az illető nem a minél jobb eredmények elérésére törekszik, inkább rutin szerűen, átlagos tempóban halad (logikai; -1 amennyiben nem biztosított)
+	\item \textbf{device\_watts:} azt jelöli hogy az erőkifejtési adatokat tényleges mérőkészülék szolgáltatja vagy csupán becsült érték (logikai; Hamis amennyiben becsült érték) 
 	\item \textbf{distance:} a megtett távolság (méter)
 	\item \textbf{elapsed\_time:} összesen eltelt idő (másodperc)
 	\item \textbf{elev\_high:} az út legmagasabb pontja (méter)

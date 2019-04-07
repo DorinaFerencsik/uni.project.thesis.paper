@@ -85,7 +85,7 @@ A megtaláláshoz első lépés az adatok áttekintése: NULL értékek vizsgál
 				\textbf{workout\_type}}  & 4039    & 9.74   & 1.85   & 0.0  & 10.0  & 10.0  & 10.0    & 12.0 \\ \hline
 		\end{tabular}%
 	}
-\caption{Nyers adathalmaz leírás}
+\caption{Nyers adathalmaz numerikus oszlopainak leírása}
 \label{tab:rawDataDescription}
 \end{table}
 
@@ -96,6 +96,7 @@ A táblázat oszlopainak a jelentése:
 	\item STD (Standard Deviation): adott jellemző szórása
 \end{itemize}
 
+Sok gond már a táblázat alapján is felfedezhető: sok jellemző tartalmaz NULL értékeket  (average\_watts, kilojoules stb.), máshol pedig olyan értékek szerepelnek amelyek érvénytelenek, értelmezhetetlenek az adott jellemzőre nézve (pl.: distance legkisebb értéke 0 méter; average\_speed legnagyobb értéke 36100 m/s (129960 km/h)). Az ehhez hasonló hibás adatok megtalálása és valamilyen jellegű javítása kritikus feladat, részletezésük a továbbiakban található.
 
 
 \subsubsection{NULL értékek}
@@ -111,16 +112,16 @@ Amennyiben egy oszlop nagy mértékben tartalmaz NULL értékeket érdemes megfo
 Az adat vizsgálata után az első szembetűnő gond a hiányzó értékek. Az alábbi jellemzők akkora mértékben hiányosak hogy a javításuk reménytelen feladat, így az adattisztítás elején törlésre kerültek.
 \begin{itemize}
 	\item average\_watts: 18.45\% hasznos értéket tartalmaz
-	\item commute: 98.83\% hasznos értéket tartalmaz azonban ezekből csupán 23 True érték
-	\item device\_watts : 19.56\%
-	\item flagged : 19.56\%
-	\item has\_heartrate : 19.56\%
-	\item heartrate\_opt\_out: 
-	\item kilojoules : 17.63\%
-	\item max\_watts 5.54\%
-	\item pr\_count : 19.56\%
-	\item resource\_state : 19.56\%
-	\item weighted\_average\_watts : 5.45\%
+	\item commute: 98.83\% hasznos értéket tartalmaz azonban ezekből csupán 23 Igaz érték tehát valójában kevesebb mint 1.0\% használható 
+	\item device\_watts : 19.56\% hasznos értéket tartalmaz
+	\item flagged : 19.56\% hasznos értéket tartalmaz
+	\item has\_heartrate : 19.56\% hasznos értéket tartalmaz
+	\item heartrate\_opt\_out: \TODO hasznos értéket tartalmaz
+	\item kilojoules : 17.63\% hasznos értéket tartalmaz
+	\item max\_watts 5.54\% hasznos értéket tartalmaz
+	\item pr\_count : 19.56\% hasznos értéket tartalmaz
+	\item resource\_state : 19.56\% hasznos értéket tartalmaz
+	\item weighted\_average\_watts : 5.45\% hasznos értéket tartalmaz
 	\item sex : 100\% hasznos azonban elenyészően kevés női adatot tartalmaz az adathalmaz, ezért a torzítatlanság érdekében a szakdolgozat során csak a férfi útvonalak kerülnek felhasználásra - így ez az jellemző funkcióját veszti, konstans érték
 	\item start\_latlng : 18.34\%
 	\item end\_latlng : 18.34\%
@@ -141,10 +142,10 @@ Az alábbiakban a különböző jellemzők kiugró érték vizsgálatának rész
 ez a jellemző m/s-al adja meg az útvonal átlagsebességét. A fenti módszer 10 kiugró értéket talált amik 2182 m/s (7855.2 km/h) és 28290 ms/s (101844.0 km/h) közé esnek. Ekkora sebesség elérése nyilvánvalóan lehetetlen kerékpárral, eredetük az adatsorok megvizsgálása után leszűkíthető a mozgási idő (moving\_time) jellemző mérésének a hiányára / hibájára. Az átlagsebesség számítása ugyanis a távolság és a mozgási idő hányadosaként kerül kiszámításra és a vizsgált kiugró értékeknél a mozgási idő mindenhol 1 másodperc míg a távolság 10 km fölött van. Ezen adatok javítása nem tűnik megvalósíthatónak. Eldobásuk után az adathalmaz 10004 utat tartalmaz.\\[6pt]
 
 \textbf{Távolság (distance):}
-a distance jellemző méterben megadva tárolja az egy-egy útvonal során megtett távolságot. Kiugró érték vizsgálat során 313 értéket talált a módszer, amik között a legkisebb értéke 99915.1 méter azaz közel 100 km. Ezek az adatsorok azonban minden más szempontból helyes értékeket tartalmaznak és valójában a 100 km-s utak sem lehetetlenek. Ezek az értékek nem kerültek törlésre az adathalmazból azonban a későbbiek során érdemes lehet a hasonlóan hosszú utakat külön kezelni\\[6pt]
+a distance jellemző méterben megadva tárolja az egy-egy útvonal során megtett távolságot. Kiugró érték vizsgálat során 313 értéket talált a módszer, amik között a legkisebb érték 99915.1 méter azaz közel 100 km. Ezek az adatsorok azonban minden más szempontból helyes értékeket tartalmaznak és valójában a 100 km-s utak sem lehetetlenek. Ezek az értékek nem kerültek törlésre az adathalmazból azonban a későbbiek során érdemes lehet a hasonlóan hosszú utakat külön kezelni.\\[6pt]
 
 \textbf{Legmagasabb tengerszint feletti pont (elev\_high):}
-az elev\_high jellemző vizsgálata során 61 kiugró érték jelzett a módszer amelyek 976.6 méter és 12103.0 méter közé esnek. A 12103 méter egyértelműen lehetetlen, a többi érték pedig vele együtt elvetésre kerül. Ezen adatsorok eldobása után az adathalmaz 9943 útvonalat tartalmaz\\[6pt]
+az elev\_high jellemző vizsgálata során 61 kiugró érték jelzett a módszer amelyek 976.6 méter és 12103.0 méter közé esnek. A 12103 méter egyértelműen lehetetlen, a többi érték pedig vele együtt elvetésre kerül. Ezen adatsorok eldobása után az adathalmaz 9943 útvonalat tartalmaz.\\[6pt]
 
 \textbf{Legnagyobb sebesség (max\_speed)}
 a max\_speed az útvonal során mért maximális sebességet jelzi m/s mértékegységben. Vizsgálata során a használt módszer 218 kiugró értéket talált. Ezek az értékek két intervallumra oszthatóak fel. 0.0 m/s - 2.1 m/s és 22.1 m/s - 122.7 ms azaz 0.0 km/h - 7.56 km/h és 79.56 km/h - 441.72 km/h. Ezek olyan adatok amelyek kilógnak az adathalmazból, sok közülük lehetetlen / értelmezhetetlen. Ezen adatsorok eldobása után az adathalmaz 9725 útvonalat tartalmaz.\\[6pt]
@@ -206,7 +207,7 @@ A kiugró értékek kezelése és a adathalmaz összefüggéseinek vizsgálata u
 
 A szakdolgozathoz használt adathalmaz esetén 3+1 jellemző kerül one-hot encode-olásra: age\_group (korcsoport), workout\_tpye, start\_date\_local és a training.\\[6pt]
 
-\textbf{age\_group:} a sportoló korcsoportját jelzi, értékei egy három elemű halmazból kerülhetnek ki: \{0, 1, 2\} ahol 0 a [18,30], 1 a [31,45], 2 pedig a [46,$+\infty$) korcsoportokba való tartozást jelenti. One-hot encoding során az eredeti jellemzőből 3 oszlop készül, végül az eredeti törlésre kerül az adathalmazból.
+\textbf{age\_group:} a sportoló korcsoportját jelzi, értékei egy három elemű halmazból kerülhetnek ki: \{0, 1, 2\} ahol 0 a [18, 30], 1 a [31, 45], 2 pedig a [46, $+\infty$) korcsoportokba való tartozást jelenti. One-hot encoding során az eredeti jellemzőből 3 oszlop készül, végül az eredeti törlésre kerül az adathalmazból.
 \begin{programreszlet}
 Python parancsok részletezése
 \begin{python}
@@ -311,38 +312,37 @@ Az adattisztítás összes lépése után az adathalmaz szerkezete lényegesen m
 
 Jellemzők:
 \begin{itemize}
-	\item average\_speed
-	\item distance
-	\item elapsed\_time
-	\item elev\_high
-	\item elev\_low
-	
-	\item hashed\_id 
-	\item max\_speed
-	\item moving\_time
-	\item total\_elevation\_gain
-	\item age\_0.0 
-	\item age\_1.0
-	\item age\_2.0
-	\item trainer\_onehot
-	\item workout\_type\_0.0
-	\item workout\_type\_4.0 
-	\item workout\_type\_10.0 
-	\item workout\_type\_11.0
-	\item workout\_type\_12.0
-	\item weekday\_Friday 
-	\item weekday\_Monday
-	\item weekday\_Saturday 
-	\item weekday\_Sunday 
-	\item weekday\_Thursday
-	\item weekday\_Tuesday
-	\item weekday\_Wednesday 
-	\item daypart\_afternoon
-	\item daypart\_dawn
-	\item daypart\_evening
-	\item daypart\_forenoon
-	\item daypart\_morning
-	\item daypart\_night
+	\item average\_speed: átlagsebesség az útvonal során (méter / másodperc)
+	\item distance: összesen megtett távolság (méter)
+	\item elapsed\_time: összesen eltelt idő (másodperc)
+	\item elev\_high: útvonal legmagasabb pontja (méter)
+	\item elev\_low: útvonal legalacsonyabb pontja (méter)
+	\item hashed\_id: sportoló hashelt azonosítója
+	\item max\_speed: legnagyobb elért sebesség (méter / másodperc)
+	\item moving\_time: mozgással töltött idő (másodperc)
+	\item total\_elevation\_gain: összesen megtett emelkedés (méter)
+	\item age\_0.0: 0. korcsoportba való tartozást jelöli (bináris)
+	\item age\_1.0: 1. korcsoportba való tartozást jelöli (bináris)
+	\item age\_2.0: 2. korcsoportba való tartozást jelöli (bináris)
+	\item trainer\_onehot: útvonal megtétele gépen történt e (bináris)
+	\item workout\_type\_0.0: 0 típusú útvonal (bináris)
+	\item workout\_type\_4.0: 4 típusú útvonal (bináris)
+	\item workout\_type\_10.0: 10 típusú útvonal (bináris)
+	\item workout\_type\_11.0: 11 típusú útvonal (bináris)
+	\item workout\_type\_12.0: 12 típusú útvonal (bináris)
+	\item weekday\_Monday: hétfői aktivitás (bináris)
+	\item weekday\_Tuesday: keddi aktivitás (bináris)
+	\item weekday\_Wednesday: szerdai aktivitás (bináris)
+	\item weekday\_Thursday: csütörtöki aktivitás (bináris)
+	\item weekday\_Friday: pénteki aktivitás (bináris)
+	\item weekday\_Saturday: szombati aktivitás (bináris)
+	\item weekday\_Sunday: vasárnapi aktivitás (bináris)
+	\item daypart\_dawn: hajnali indulás (bináris)
+	\item daypart\_morning: reggeli indulás (bináris)
+	\item daypart\_forenoon: délelőtti indulás (bináris)
+	\item daypart\_afternoon: délutáni indulás (bináris)
+	\item daypart\_evening: esti indulás (bináris)
+	\item daypart\_night: éjszakai indulás (bináris)
 \end{itemize}
 
 
@@ -382,14 +382,13 @@ A tisztított adathalmaz numerikus oszlopainak összefoglalása a \myref{tab:cle
 
 \Section{Gépi tanulás}
 
-
-\SubSection{Mozgási és eltelt idő számítása}
-
 Az adathalmaz egy aktivitásra tekintve két különböző időtartamot különböztet meg: a mozgással töltött (moving\_time) és az összesen eltelt (elapsed\_time) időt, mindkettőt másodpercben mérve. A szakdolgozat során ennek a két időtartamnak a várható értékének a meghatározása az egyik cél gépi tanulási algoritmusokkal valamint ezen algoritmusoknak az összehasonlítása. Ennek a feladatnak a megoldásához a  \myref{subsec:regression} alfejezetben kifejtett regressziók adnak alapot.
 
 A kétféle időtartam alapvetően külön kezelve, egyenként kerül becslésre, erre kivételt csak a \myref{ssec:mlpregressor} pontban részletezett MLPRegressor fog jelenteni.
 
-\subsubsection{Mozgási idő (moving\_time)}
+%% MOVING_TIME
+\SubSection{Mozgási idő számítása}
+
 A tisztított adathalmaz beolvasása után szükséges kialakítani az $X$ és $y$ halmazokat amelyek a \TODO adatokat tartalmazzák. Az $y$ fogja tartalmazni a moving\_time jellemzőt míg $X$ minden mást ami alapján $y$ megbecsülhető. 
 
 A regressziók során nagyon fontos az adathalmaz skálázása, egy intervallumra hozása. Ennek fontossága akkor mutatkozik meg igazán mikor a különböző jellemzők nagyon eltérő intervallumokba esnek, például az average\_speed 2.03 és 12.478 értékek között mozog míg a distance 161 és 436806 között. Ezért a gépi tanulás során gyakran alkalmazott eljárás az adathalmaz normalizálása vagy standardizálása amely az összes jellemzőt egy szűk intervallumra vetíti le. A standardizálás elvégzésére a szakdolgozat során a scikit-learn csomag által biztosított StandardScaler függvény szolgál.
@@ -407,6 +406,7 @@ scaler = StandardScaler()
 scaledData = scaler.fit_transform(X)
 scaledData = pandas.DataFrame(scaledData, columns=names)
 \end{python}
+\label{prog:movingStandard}
 \end{programreszlet}
 
 \begin{programreszlet} A túltanulás elkerülése érdekében a tanító és cél adathalmazokat szét kell osztani tanító és tesztelő részekre. A regressziós modellek csak a tanító (train) adatokon fognak tanulni, ellenőrzésre, pontosság meghatározására pedig a teszt (test) adatok szolgálnak. A tanító és teszt adathalmazok kialakítására a scikit-learn csomag álltal biztosított train\_test\_split függvény szolgál.
@@ -419,12 +419,168 @@ scaledData.drop(columns=['moving_time','elapsed_time'], inplace=True)
 trainX, testX, trainy, testy = train_test_split(scaledData, scaledY, 
 						random_state=42)
 \end{python}
-
+\label{prog:movingTrainTestSplit}
 \end{programreszlet}
 
-\textbf{Ridge regresszió:} ez az algoritmus 2 paraméterrel finomhangolható: $\alpha$ és solver. \TODO kifejtés. A moving\_time esetén a standardizált adathalmazra a legoptimálisabb (legnagyobb pontosságot eredményező paraméterek) a $\alpha = 0.003$ solver : saga. Ezeknek az alkalmazása esetén, a modellt a trainX és trainy adathalmazokon tanítva a pontosság 96.251\% (a teszt adatokon). A modell nem tanul túl, mivel a teszt adatokon (amiket a modell tanulás során nem ismer) nagy pontosság jellemzi a regressziót.
+A \myref{prog:movingStandard} és a \myref{prog:movingTrainTestSplit} program részletek segítségével két különböző adathalmaz kerül kialakításra. Az első esetében az $X$ halmaz a moving\_time és az elapsed\_time oszlopok kivételével minden jellemzőt tartalmaz míg a második esetben az $X$ halmazban csupán a következő jellemzők találhatóak meg:  age\_0.0, age\_1.0, age\_2.0, distance, elev\_high, elev\_low, hashed\_id, total\_elevation\_gain, trainer\_onehot. Az $y$ halmaz mindkét esetben a moving\_time jellemzőt tartalmazza. Mindkét adathalmaz felosztásra került tanító és tesztelő részhalmazokra a train\_test\_split függvény segítségével. A részhalmazok prefixei: all és reduced.
 
-\textbf{Lasso regresszió:} 
-$\alpha = 0.0001$, pontosság: 96.246\%
+\subsubsection{Ridge regresszió:} ez az algoritmus 2 fő paraméterrel finomhangolható: $\alpha \geq 0 $ és solver $\in$ \{auto, svd, cholesky, lsqr, sparce\_cg, sag, saga\}. Az $\alpha$ paraméter a regularizáció mértékét befolyásolja a különböző solver-ek pedig a számítási rutint befolyásolják (lsd.: dokumentáció). Az algoritmus optimalizálása során $\alpha \in$ \{0.0001, 0.0003, 0.001, 0.003, 0.01, 0.1, 0.3, 0.35, 0.6\} értékek kerültek figyelembe vételre.
 
+% \TODO kifejtés. A moving\_time esetén a standardizált adathalmazra a legoptimálisabb (legnagyobb pontosságot eredményező paraméterek) a $\alpha = 0.003$ solver : saga. Ezeknek az alkalmazása esetén, a modellt a trainX és trainy adathalmazokon tanítva a pontosság 96.251\% (a teszt adatokon). A modell nem tanul túl, mivel a teszt adatokon (amiket a modell tanulás során nem ismer) nagy pontosság jellemzi a regressziót.
+
+\subsubsection{Lasso regresszió:} a modell finomhangolása elsősorban az $\alpha \geq 0$ paraméter változtatásával történik. A scikit-learn implementáció lehetőséget ad egyéb opciók beállítására azonban ezek nem befolyásolják nagyban a modell működését így használatuk mellőzésre kerül a szakdolgozat során. Az optimalizálás során $\alpha \in$ \{0.0001, 0.0003, 0.001, 0.003, 0.01, 0.1, 0.3, 0.35, 0.6\} értékek kerültek figyelembe vételre.
+%$\alpha = 0.0001$, pontosság: 96.246\%
+
+
+\subsubsection{Random Forest regresszió:} ez a döntési fákon alapuló eljárás lényegesen mélyebben személyre szabható a paraméterei révén mint a Ridge és a Lasso regresszió. Optimalizálása során a következő paraméterek kerültek felhasználásra:
+\begin{itemize}
+	\item n\_estimators$\in$ \{200, 500, 1000\}: fák száma
+	\item max\_depth $\in$ \{NaN, 10, 50, 100\}: fák maximum mélysége
+	\item max\_features $\in$ \{auto, sqrt\}: a legjobb felosztás megtalálásához felhasználandó jellemzők darabszáma
+	\item min\_samples\_leaf $\in$ \{1, 2, 4\}: egy levél legalább hány mintát tartalmazzon
+	\item min\_samples\_split $\in$ \{2, 5, 10\}: csomópontok felosztásához szükséges mintaszám
+	\item bootstrap $\in$ \{True, False\}: teljes adathalmaz vagy részhalmazok felhasználásával kerüljenek kialakításra az egyes fák
+\end{itemize}
+A Random Forest egyéb paraméterei is befolyásolhatják a tanulás eredményességét, a becslések pontosságát. 
+
+
+\subsubsection{Eredmények}
+
+Ridge és Lasso regresszió
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|l|r|r|r|r|c|}
+		\hline
+		\textbf{Modell} & \textbf{X} & \textbf{y}   & \multicolumn{1}{l|}{\textbf{Pontosság}} & \textbf{$\boldsymbol\alpha$} & \multicolumn{1}{l|}{\textbf{Solver}} \\ \hline
+		\textbf{Ridge}  & all        & moving\_time & 0.962492                                & 0.01              & saga                                 \\ \hline
+		\textbf{Ridge}  & reduced    & moving\_time & 0.938656                                & 0.01              & saga                                 \\ \hline
+		\textbf{Lasso}  & all        & moving\_time & 0.962469                                & 0.0001            & --                                   \\ \hline
+		\textbf{Lasso}  & reduced    & moving\_time & 0.938630                                & 0.0001            & --                                   \\ \hline
+	\end{tabular}
+\caption{Ridge és Lasso eredmények moving\_time jellemző becslésére}
+\end{table}
+
+összegző szöveg Ridge és Lasso eredményekről
+
+Random Forest regresszió
+
+
+szöveg
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|l|r|r|}
+		\hline
+		\textbf{Modell}              & \multicolumn{1}{l|}{\textbf{Random Forest}} & \multicolumn{1}{l|}{\textbf{Random Forest}} \\ \hline
+		\textbf{X}                   & all                                         & reduced                                     \\ \hline
+		\textbf{y}                   & moving\_time                                & moving\_time                                \\ \hline
+		\textbf{Score}               & 0.957091                                    & 0.923862                                    \\ \hline
+		\textbf{n\_estimators}       & 200                                         & 200                                         \\ \hline
+		\textbf{max\_depth}          & 50                                          & 50                                          \\ \hline
+		\textbf{max\_features}       & auto                                        & auto                                        \\ \hline
+		\textbf{min\_samples\_leaf}  & 2                                           & 2                                           \\ \hline
+		\textbf{min\_samples\_split} & 2                                           & 2                                           \\ \hline
+		\textbf{bootstrap}           & True                                        & True                                        \\ \hline
+	\end{tabular}
+\caption{Random Forest regresszió eredmények moving\_time jellemző becslésére}
+\end{table}
+
+
+
+\subsubsection{Moving\_time összefoglalás}
+
+%% MOVING_TIME END
+
+
+%% ELAPSED_TIME
+\SubSection{Eltelt idő számítása}
+
+A tisztított adathalmaz beolvasása után szükséges kialakítani az $X$ és $y$ halmazokat amelyek a \TODO adatokat tartalmazzák. Az $y$ fogja tartalmazni a elapsed\_time jellemzőt míg $X$ minden mást ami alapján $y$ megbecsülhető. 
+
+A regressziók során nagyon fontos az adathalmaz skálázása, egy intervallumra hozása. Ennek fontossága akkor mutatkozik meg igazán mikor a különböző jellemzők nagyon eltérő intervallumokba esnek, például az average\_speed 2.03 és 12.478 értékek között mozog míg a distance 161 és 436806 között. Ezért a gépi tanulás során gyakran alkalmazott eljárás az adathalmaz normalizálása vagy standardizálása amely az összes jellemzőt egy szűk intervallumra vetíti le. A standardizálás elvégzésére a szakdolgozat során a scikit-learn csomag által biztosított StandardScaler függvény szolgál.
+
+\begin{programreszlet}   
+	Adathalmaz standardizálása	
+\begin{python}
+from sklearn.preprocessing import StandardScaler
+X = dataset.copy()
+		
+names = X.columns
+scaler = StandardScaler()
+		
+scaledData = scaler.fit_transform(X)
+scaledData = pandas.DataFrame(scaledData, columns=names)
+\end{python}
+\label{prog:elapsedStandard}
+\end{programreszlet}
+
+\begin{programreszlet} A túltanulás elkerülése érdekében a tanító és cél adathalmazokat szét kell osztani tanító és tesztelő részekre. A regressziós modellek csak a tanító (train) adatokon fognak tanulni, ellenőrzésre, pontosság meghatározására pedig a teszt (test) adatok szolgálnak. A tanító és teszt adathalmazok kialakítására a scikit-learn csomag álltal biztosított train\_test\_split függvény szolgál.
+\begin{python}
+from sklearn.model_selection import train_test_split
+		
+scaledY = scaledData['elapsed_time']
+scaledData.drop(columns=['elapsed_time'], inplace=True)
+		
+trainX, testX, trainy, testy = train_test_split(scaledData, scaledY, 
+						random_state=42)
+\end{python}
+\label{prog:elapsedTrainTestSplit}
+\end{programreszlet}
+
+A \myref{prog:elapsedStandard} és a \myref{prog:elapsedTrainTestSplit} program részletek segítségével 7 különböző adathalmaz kerül kialakításra. A cél mindig az elapsed\_time jellemző becslése amelyet egyik X sem tartalmaz
+\begin{itemize}
+	\item \textbf{all:} X minden jellemzőt tartalmaz (elapsed\_time kivételével)
+	\item \textbf{reduced:} X csökkentett számú jellemzőt tartalmaz, név szerint a következőket: age\_0.0, age\_1.0, age\_2.0, distance, elev\_high, elev\_low, hashed\_id, total\_elevation\_gain, moving\_time, trainer\_onehot
+	\item \textbf{ageNull:} X és y is csak a 0 korcsoportba (18-30) tartozó sportolók adatait tartalmazza 
+	\item \textbf{ageOne:} X és y is csak az 1 korcsoportba (31-45) tartozó sportolók adatait tartalmazza
+	\item \textbf{ageTwo:} X és y is csak a 2 korcsoportba (46+) tartozó sportolók adatait tartalmazza
+	\item \textbf{distanceSmall:} X csak olyan útvonalakat tartalmaz ahol a távolság kisebb mint 50 km
+	\item \textbf{distanceBig:} X csak olyan útvonalakat tartalmaz ahol a távolság nagyobb mint 50 km
+	
+\end{itemize}
+
+
+
+\subsubsection{Eredmények}
+
+Ridge és Lasso regresszió
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|r|c|r|r|c|}
+			\hline
+			\textbf{X}    & \textbf{Modell} & \multicolumn{1}{l|}{\textbf{Pontosság}} & \multicolumn{1}{l|}{\textbf{$\alpha$}} & \textbf{Solver} \\ \hline
+			all           & Ridge           & 0.722601                                & 0.35                                   & lsqr            \\ \hline
+			all           & Lasso           & 0.733696                                & 0.01                                   & --              \\ \hline
+			reduced       & Ridge           & 0.741402                                & 0.6                                    & saga            \\ \hline
+			reduced       & Lasso           & 0.742481                                & 0.001                                  & --              \\ \hline
+			ageNull       & Ridge           & 0.922961                                & 0.003                                  & saga            \\ \hline
+			ageNull       & Lasso           & 0.923146                                & 0.003                                  & --              \\ \hline
+			ageOne        & Ridge           & 0.756610                                & 0.0                                    & auto            \\ \hline
+			ageOne        & Lasso           & 0.774819                                & 0.01                                   & --              \\ \hline
+			ageTwo        & Ridge           & 0.914806                                & 0.6                                    & saga            \\ \hline
+			ageTwo        & Lasso           & 0.917202                                & 0.003                                  & --              \\ \hline
+			distanceSmall & Ridge           & 0.325245                                & 0.6                                    & sag             \\ \hline
+			distanceSmall & Lasso           & 0.384225                                & 0.01                                   & --              \\ \hline
+			distanceBig   & Ridge           & 0.823487                                & 0.6                                    & saga            \\ \hline
+			distanceBig   & Lasso           & 0.908215                                & 0.1                                    & --              \\ \hline
+	\end{tabular}
+\caption{Ridge és Lasso eredmények elapsed\_time becsléséhez}
+\end{table}
+
+összegző szöveg Ridge és Lasso eredményekről
+
+Random Forest regresszió
+
+
+szöveg
+\begin{table}[!h]
+	\centering
+	
+	\caption{Random Forest regresszió eredmények elapsed\_time jellemző becslésére}
+\end{table}
+
+
+
+\subsubsection{Elapsed\_time összefoglalás}
 %\Section{Programkód}
