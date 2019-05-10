@@ -34,6 +34,15 @@
 %csv fájl beolvasó csomag
 \usepackage{csvsimple}
 \usepackage{tikz}
+\usepackage{subcaption}
+% url megjelenítés / tördelés\\
+\usepackage[
+bookmarksopen,
+bookmarksdepth=2,
+%breaklinks=true
+hidelinks
+]{hyperref}
+
 %Python megjelenítő
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{cmr}{bx}{n}{10} % for bold       txtt instead of cmr
@@ -63,7 +72,9 @@
 		backgroundcolor=\color{lightgrey},
 		language=Python,
 		basicstyle=\ttm,
-		otherkeywords={self, for, if, raise, None, is, True, False},             % Add keywords here
+		otherkeywords={self, raise, None, is, True, False},             % Add keywords here
+	%	morekeywords=[2]{self, for, if, raise, None, is, True, False}
+	%	keywordstyle=[2]{]\ttb\color{deepgreen}},
 		keywordstyle=\ttb\color{deepgreen},
 		commentstyle=\tti\color{deepgreen},
 		emph={MyClass,__init__},          % Custom highlighting

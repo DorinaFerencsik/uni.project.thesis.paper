@@ -1,85 +1,6 @@
 \Chapter{Téma elméleti kifejtése}
 \label{Chap:tema}
 
-\iffalse
-Ebben a fejezetben kell a szakdolgozatban felhaszn�lt elm�leti ismeretanyagot, szakirodalmat megadni ill. kifejteni. Lehet benne t�bb alfejezet vagy al-alfejezet is. Ezek sz�moz�sa �s a tartalomjegyz�kben val� megjelen�se r�gz�tett (alfejezet c�me a fejl�cben k�z�pen, az oldalsz�m a l�bl�cben jobbsz�len jelenik meg). A fejezet c�me, azaz a ,,T�ma elm�leti kifejt�se'' megv�ltoztathat� a t�ma szerint. Ezen fejezetben felhaszn�lhat� oldalak mennyis�ge �sszef�gg�sben van a k�vetkez� fejezettel (l�sd \aref{Chap:dokumen}. fejezet bevezet�s�t).\\
-
-�s most m�r g�pelhetj�k a sz�veget\ldots
-
-\Section{Csin�ljunk m�st is}
-K�sz�ts�nk m�g defin�ci�t, t�telt, bizony�t�st, megjegyz�st stb.! Figyelj�k meg az egyes bet�v�ltozatokat!
-\begin{definition}
-Ez egy defin�ci�
-\end{definition}
-
-\begin{lemma}
-Ez egy lemma
-\end{lemma}
-
-\begin{theorem}
-Ez egy t�tel
-\end{theorem}
-
-\begin{proof}
-Ez egy bizony�t�s
-\end{proof}
-
-\begin{corollary}
-Ez egy t�tel
-\end{corollary}
-
-\begin{remark}
-Ez egy megjegyz�s
-\end{remark}
-
-\begin{example}
-Ez egy p�lda
-\end{example}
-�s l�ssuk \myaref{Chap:bevezetes} fejezetben lev� egyenletrendszert most m�r egyenletsz�moz�ssal:
-\begin{alignat}{4}
-  13x &+{} &  4y &    &     & ={} & 9\\
-   3x &-{} & 12y &+{} & 23z & ={} &14
-\end{alignat}
-
-\Section{K�sz�ts�nk sz�nes t�bl�zatokat}
-
-Legyen minden sz�nes: A \verb|\columncolor|, \verb|\rowcolor|,
-\verb|cellcolor| parancsok haszn�lata:
-
-\begin{verbatim}
-\begin{tabular}{|>{\columncolor[gray]{0.5}}l|
->{\columncolor[rgb]{0.5,0.5,0.7}}c|r|}
-\hline
-egy & kett�& h�rom\\
-\hline
-\rowcolor[cmyk]{0.1,0.3,0.5,0}h�rom & n�gy& �t\\
-\hline
-\rowcolor[rgb]{0.8,0.8,0.2}h�rom &
-\cellcolor[rgb]{1,0.1,0.1} n�gy& �t\\
-\hline
-\end{tabular}
-\end{verbatim}
-
-\begin{center}
-\begin{tabular}{|>{\columncolor[gray]{0.5}}l|>{\columncolor[rgb]{0.5,0.5,0.7}}c|r|}
-\hline
-egy & kett�& h�rom\\
-\hline
-\rowcolor[cmyk]{0.1,0.3,0.5,0}h�rom & n�gy& �t\\
-\hline
-\rowcolor[rgb]{0.8,0.8,0.2}h�rom & \cellcolor[rgb]{1,0.1,0.1} n�gy& �t\\
-\hline
-\end{tabular}
-\end{center}
-
-T�bbf�le sz�nmodell haszn�lhat�: pl. \verb|rgb|, mivel ezt a
-,,legk�nnyebb'' kikeverni (red-green-blue) 3 val�s sz�mb�l,
-melyek mindegyike a $[0,1]$ intervallumb�l ker�lnek ki. Viszont
-h�tr�nya lehet, hogy a nyomtat�si k�p elt�rhet a
-\verb|.dvi|-ban l�tott sz�nt�l, ez�rt szokt�k haszn�lni a
-\verb|cmyk| nev� modellt, mely biztosan j�l megy.
-\fi 
-
 \Section{Mobil alkalmazások}
 Napjainkban rengeteg különböző kerékpáros alkalmazás érhető el amik más más területre fókuszálnak. A következő pontokban ezekre láthatunk néhány példát az egyszerű mérnöki alapú számítástól az útvonalak nyomon követésén keresztül a fejlett, összetett tervező rendszerekig. Látható hogy a felhasználók körében nagy népszerűségnek örvend a különböző alkalmazások közösségi funkciói ahol lehetőség van az ismerősök megtalálására, útvonalak megosztására.  
 
@@ -101,8 +22,6 @@ A Best Bike Split \cite{bestbikesplit} egy rendkívül összetett rendszer amely
 
 \SubSection{Összefoglalás és célkitűzés}
 Több tucatnyi hasonló alkalmazás létezik, webes felülettel illetve Android és iOS lefedéssel hiszen a kerékpározás fellendülőben van napjainkban, így egyre több alkalmazás készül a felhasználói igények kielégítésére mind versenyzők mind pedig hétköznapi felhasználók számára akiknek a biciklizés inkább közlekedési mint sport eszköz. Ezen alkalmazások felsorolása vagy részletezése nem célja ennek a szakdolgozatnak, azonban néhány példa alapján is könnyen meghatározhatóak általános csoportok amelyekbe a létező megoldások besorolhatóak.
-
-
 
 
 \subsubsection{Útvonal rögzítés} 
@@ -158,12 +77,7 @@ A fenti csoportok összefoglalása a vizsgált alkalmazásokra:
 
 
 \subsubsection{Célkitűzés}
-Ezen 4 fő csoport közül az első három által meghatározott problémákra, igényekre mára már rengeteg, változatos módon megvalósított megoldás létezik, így ezeknek a tárgyalásától a továbbiakban eltekintünk. Azonban az utolsó probléma, a felhasználó egyéni teljesítményének figyelembe vétele egy nyitott terület, ahova nem sokan merészkedtek még. \TODO ez a szakdoga célja  
- 
-
-
- minden sport esetén az adott ember, sportoló az alapvető tényező, az ő képességei fogják meghatározni legnagyobb részben az eredményeit. Természetesen a felszerelés és a terepviszonyok is nagy hatással vannak a végeredményre de az emberi tényező nem hagyható ki a számítások során amennyiben növelni akarjuk a pontosságot.
-
+Ezen 4 fő csoport közül az első három által meghatározott problémákra, igényekre mára már rengeteg, változatos módon megvalósított megoldás létezik, így ezeknek a tárgyalásától a továbbiakban eltekintünk. Azonban az utolsó probléma, a felhasználó egyéni teljesítményének figyelembe vétele egy nyitott terület, ahova nem sokan merészkedtek még, így a szakdolgozat során összehasonlításra kerülő gépi tanulási algoritmusok célja sportolói teljesítmény becslése. A teljesítményt természetesen nagy mértékben befolyásolja a kerékpáros felszerelések minősége és állapota, az útvonal terep és időjárás viszonyai azonban az egyén általános és pillanatnyi fizikai és szellemi állapota (kimerültség, kedvtelenség stb.) nem elhanyagolható tényező. Az átlagos értelemben vett teljesítmény több részre bontható le a kerékpározás kapcsán, melyek a szakdolgozat során külön kerülnek megválaszolásra.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -174,23 +88,26 @@ A sportteljesítmény becslése nehéz feladat, mivel egyénenként nagyon elté
 
 
 
-\SubSection{Nehézségi osztályok meghatározása - eddigiek }
+\SubSection{Nehézségi osztályok meghatározása}
 A Strava-ról gyűjtött utak sok adatot tartalmaznak azonban nincsenek kategorizálva, így cél az eddig megtett utakat nehézség alapján több osztályba sorolni, azonban ennek megvalósítása kérdéses. Mivel a helyes label-ek hiányoznak klaszterezési módszereket kell használni. Várhatóan az egyén adatai alapján és a összes összegyűjtött adat alapján készült osztályok különbözőek lesznek, hiszen más útvonalakat tettek meg, eltérő eredményekkel.
 
-Egy általános modell elkészítése az elsődleges feladat, mivel az adatok sokszínűsége és mennyisége miatt jobb kiindulópontot jelent. Amennyiben egy adott felhasználónak megfelelően sok és sokféle útadata van akkor érdemes lehet az egyéni adatokra is kipróbálni az osztályozást.
+Egy általános modell elkészítése az elsődleges feladat, mivel az adatok sokszínűsége és mennyisége miatt jobb kiindulópontot jelent. Amennyiben egy adott felhasználó megfelelően sok és sokféle útvonal adattal rendelkezik akkor érdemes lehet egyéni, személyre szabott nehézségi csoportok kialakításával is foglalkozni.
 
-\SubSection{Nehézség meghatározása - új útvonalra}
-A már megtett útvonalak osztályozása után a következő lépés az új, megtenni kívánt útvonalak nehézségének meghatározása. Ez megvalósítható egyrészt a már betanított klaszterezési algoritmusok felhasználásával, másrészt a klaszterezés által meghatározott osztályok label-jeit felhasználva valamilyen osztályozással. 
+%\SubSection{Nehézség meghatározása - új útvonalra}
+%A már megtett útvonalak osztályozása után a következő lépés az új, megtenni kívánt útvonalak nehézségének meghatározása. Ez megvalósítható egyrészt a már betanított klaszterezési algoritmusok felhasználásával, másrészt a klaszterezés által meghatározott osztályok label-jeit felhasználva valamilyen osztályozással. 
 
 
 %Időpont is érdekes lehet (reggeli / esti között van e különbség)
 \SubSection{Időtartam becslés}
 
-Az egyik legalapvetőbb feladat a várható idő meghatározása, hiszen ez az egyik legmeghatározóbb pontja a kerékpározásnak - mennyi időbe fog telni mire megtesz valaki adott kilométert? Ennek a kérdésnek a megválaszolására alapvetően a különböző regressziók alkalmasak, amik az út paraméterei alapján folytonos értéket adnak vissza. Azonban ez a pont kicsit bonyolultabb mint amilyennek tűnik, mivel alapvetően kétféle időtartamot különböztetünk meg: a mozgási és a tényleges időtartamot. Az első jelöli az összesen mozgással töltött időt, míg a második magába foglalja a különböző megállókat mint a pihenés, várakozás forgalmi lámpáknál, hosszabb utak esetén étkezéssel töltött időket stb. Ennek megoldására több lehetőség is kínálkozik.
+Az egyik legalapvetőbb feladat a várható idő meghatározása, hiszen ez az egyik legmeghatározóbb pontja a kerékpározásnak - mennyi időbe fog telni mire megtesz valaki adott távolságot? Ennek a kérdésnek a megválaszolására alapvetően a különböző regressziók alkalmasak, amik az út paraméterei alapján folytonos értéket adnak vissza. Azonban ez a pont kicsit bonyolultabb mint amilyennek tűnik, mivel alapvetően kétféle időtartamot különböztetünk meg: a mozgási és a tényleges időtartamot. Az első jelöli az összesen mozgással töltött időt, míg a második magába foglalja a különböző megállókat mint a pihenés, várakozás forgalmi lámpáknál, hosszabb utak esetén étkezéssel töltött időket stb.
 
-A legegyszerűbb megoldás olyan regresszió használata amely egy inputhoz több eredmény, output-ot is tud társítani. Erre kínál lehetőséget \myaref{ssec:mlpregressor} pontban részletezett MLPRegressor. Ennek használatával rögtön mindkét idő előáll, nem szükséges további lépéseket tenni.
+% Ennek megoldására több lehetőség is kínálkozik.
 
-A második lehetőség több részből áll. Első lépésben tetszőleges regresszióval csak a mozgási időre készül becslés, mivel ez szorosabban összefügg  az olyan alapvető adatokkal mint a távolság. Második lépésként pedig egy újabb regressziós modellt kell használni, ami a mozgási idő és egyéb paraméterek segítségével képes a teljes várható időre becslést készíteni.
+%A legegyszerűbb megoldás olyan regresszió használata amely egy inputhoz több eredmény, output-ot is tud társítani. Erre kínál lehetőséget \myaref{ssec:mlpregressor} pontban részletezett MLPRegressor. Ennek használatával rögtön mindkét idő előáll, nem szükséges további lépéseket tenni.
+
+%A második lehetőség több részből áll. 
+A különböző időtartamok kiszámításához első lépésben tetszőleges regresszióval csak a mozgási időre készül becslés, mivel ez szorosabban összefügg  az olyan alapvető adatokkal mint a távolság. Második lépésként pedig egy újabb regressziós modellt kell használni, ami a mozgási idő és egyéb paraméterek segítségével képes a teljes várható időre becslést készíteni.
 
 
 \SubSection{Edzésterv}
@@ -202,11 +119,7 @@ A második lehetőség több részből áll. Első lépésben tetszőleges regre
 
 %\TODO kifejtés
 
-A felhasználók számára javasolt edzésterveknek több lehetséges megvalósítási módja is van. A legteljesebb kivitelezés a térképen jelölt konkrét útvonal, célul kitűzött teljesítési és részidőkkel, nehézségi szinttel. Azonban a szakdolgozat során egy valamivel egyszerűbb feladat elérése a cél, amit két alrészre lehet bontani.
-\begin{itemize}
-	\item Az első típus esetén a felhasználó ad meg egy útvonalat, aminek adataiból kell a teljes várható időre, részidőkre, sebességre célkitűzéseket adni, alapul véve hogy a felhasználó milyen nehézségi szintet tűz ki. A részidőket érdemes külön vizsgálni, hiszen egy meredeken emelkedő szakasz teljesítése sokkal nagyobb kihívás a kerékpározók számára mint egy viszonylag sík terepen való haladás.
-	\item A második típus esetén az út adatait is az algoritmusnak kell kiszámolnia, ideértve az út hosszát és a szintemelkedéseket. Ezen adatok valamint a kitűzött teljesítési idő egyensúlyba hozásával kell egy-egy nehézségi szinthez racionális nehézségű útvonal tervet létrehozni.
-\end{itemize}
+A felhasználók számára javasolt edzésterveknek több lehetséges megvalósítási módja is van. A legteljesebb kivitelezés a térképen jelölt konkrét útvonal, célul kitűzött teljesítési és részidőkkel, nehézségi szinttel. Azonban a szakdolgozat során egy lényegesen egyszerűbb, alapvető módszer megvalósítása a cél, aminek alapját a korábban meghatározott nehézségi csoportok fogják jelenteni. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -220,11 +133,10 @@ Ebben a fejezetben találhatóak meg a szakdolgozat során használt gépi tanul
 
 
 \SubSection{Regresszió} \label{subsec:regression}
-%\TODO Regresszió fogalma, használhatósága
 A regresszió egy felügyelt gépi tanulási módszer amely folytonos kimenetet generál. A tanuláshoz szükség van a bemeneti adathalmazra valamint a helyes kimeneti értékekre, amik elemzésével az algoritmus képes új bemeneti adatpárokra kimenetet generálni.
 
-\subsubsection{Ridge }
-A Ridge regresszió kitűnően alkalmas a Legkisebb négyzetek módszerének problémáinak való kiküszöbölésére. 
+\subsubsection{Ridge}
+A Ridge regresszió \cite{sklearn-ridge}\cite{ml-ridge} kitűnően alkalmas a Legkisebb négyzetek módszerének problémáinak való kiküszöbölésére. 
 A módszer matematikailag:
 
 $$ \min_{w} \norm{Xw-y}_2^2 + \alpha \norm{w}_2^2$$ 
@@ -236,15 +148,15 @@ ahol $\alpha \geq 0$ komplexitási paraméter. Ez a paraméter befolyásolja a c
 	\item a magyarázó változók (jellemzők) között korreláció figyelhető meg, tehát mikor az adathalmaz multikollineáris
 \end{itemize}
 
-Regularizáció: a Ridge regresszió L2 típusú regularizációt valósít meg. \TODO L2 leírása
+Regularizáció: a Ridge regresszió L2-es típusú regularizációt valósít meg, azaz büntető kifejezésként (\textit{penalty term}) az $\alpha \norm{w}_2^2$ formula kerül felhasználásra.
 
 
-Ridge VS Legkisebb négyzetek módszere: a legkisebb négyzetek módszere nem különböztet meg "fontos" és "kevésbé fontos" jellemzőket, így magas jellemzőszám és kevés adatsor esetén túlilleszkedést eredményez, valamint nehezen kezel multikollineáris adathalmazt. A Ridge regresszió kiküszöböli ezeket a problémákat ugyanis pontosan elegendő torzítást (\textit{bias}) használ ahhoz, hogy a becslések ésszerűen megbízhatóak legyenek.
+Ridge és Legkisebb négyzetek módszere: a legkisebb négyzetek módszere nem különböztet meg "fontos" és "kevésbé fontos" jellemzőket, így magas jellemzőszám és kevés adatsor esetén túlilleszkedést eredményez, valamint nehezen kezel multikollineáris adathalmazt. A Ridge regresszió kiküszöböli ezeket a problémákat ugyanis pontosan elegendő torzítást (\textit{bias}) használ ahhoz, hogy a becslések ésszerűen megbízhatóak legyenek.
 
 
 
 \subsubsection{Lasso}
-A \textit{Least Absolute Shrinkage and Selection Operator} angol kifejezés rövidítése. Ez egy lineáris modell amely ritka együtthatókat (\textit{sparse coefficients}) becsül. Hasznos lehet tömörített érzékelés (\textit{compressed sensing}) esetén mivel a kevesebb magyarázó változót tartalmazó megoldások felé tendál, így effektíve csökkentve az eredményt befolyásoló jellemzők számát. Matematikailag:
+A LASSO regresszió \cite{sklearn-lasso}\cite{ml-lasso} a \textit{Least Absolute Shrinkage and Selection Operator} angol kifejezés rövidítése. Ez egy lineáris modell amely ritka együtthatókat (\textit{sparse coefficients}) becsül. Hasznos lehet tömörített érzékelés (\textit{compressed sensing}) esetén mivel a kevesebb magyarázó változót tartalmazó megoldások felé tendál, így effektíve csökkentve az eredményt befolyásoló jellemzők számát. Matematikailag:
 
 $$ \min_{w}\frac{1}{2n_{samples}} \norm{Xw-y}_2^2 + \alpha \norm{w}_1$$
 ahol $\alpha \geq 0$ konstans együttható az L1 regularizációt befolyásoló, csökkenés mértékét jelző paraméter. 
@@ -260,7 +172,7 @@ A Lasso regresszió tehát támogatja a minél egyszerűbb, ritka (\textit{spars
 
 
 \subsubsection{Random Forest }
-A Random Forest modell egy additív típusú modell amely a jellemzők közötti összefüggések feltárásához döntési fákat kombinál egy végső modellbe. Formálisabban:
+A Random Forest \cite{sklearn-randomforest}\cite{ml-randomforest} modell egy additív típusú modell amely a jellemzők közötti összefüggések feltárásához döntési fákat kombinál egy végső modellbe. Formálisabban:
 $$ g(x) = f_0(x) + f_1(x) + f_2(x) + \dots$$
 ahol a $g$ végleges modell az $f_i$ alapmodellek összessége. Minden $f_i$ egy döntési fa. A Random Forest érdekessége hogy az összes alapmodell egymástól függetlenül, a rendelkezésre álló adat különböző részhalmazait felhasználva kerül kialakításra.
 
@@ -268,39 +180,39 @@ A módszer előnye a lineáris modellekkel szemben hogy képes a nem-lineáris �
 
 
 
-\subsubsection{MLPRegressor} \label{ssec:mlpregressor}
-Multi-layer Perceptron Regression, azaz mesterséges neuronokból felépülő többrétegű struktúrán, más néven egy neurális hálón alapuló regressziót valósít meg. Ez egy felügyelt tanulási algoritmus, tehát inputként a feature-ok egy mátrixát ($X$) valamint a hozzájuk tartozó helyes label-eket ($y$) várja. Ezen értékek alapján backpropagation-t használva a módszer folytonos értékek készletével tér vissza. Az MLPRegressor továbbá több kimenetű regressziót is támogat, így egy mintához több output érték is rendelhető.
-
-
-\SubSection{Osztályozás}
-Az osztályozás egy felügyelt gépi tanulási algoritmus, melynek lényege hogy adott input adatokból és helyes label-jeikből (amik megadják hogy az egyes adatok melyik osztályhoz tartoznak) tanulva az új adatokhoz megfelelő osztályt, csoportot rendeljen. 
-\subsubsection{Nearest Neighbors Classification}
-
-A szomszéd-alapú osztályozás példányalapú tanulás: nem egy általános belső modellt próbál konstruálni, csak egyszerűen a training data példányait tárolja.
-
-A scikit-learn csomag két különböző legközelebbi szomszéd módszert is kínál: a KNeighborsClassifier-t és a RadiusNeighborsClassifier-t
-
-\begin{itemize}
-	\item \textbf{KNeighborsClassifier:} ez a módszer az egyes pontok $k$ legközelebbi szomszédja alapján osztályoz, ahol $k$ egy a fejlesztő által megadott egész szám. A $k$ optimális értéke nagyban függ az adattól: általában egy nagyobb $k$ elnyomja az anomáliákat, zajok hatását, azonban az osztály határok kevésbé lesznek egyértelműek. Ez a módszer elterjedtebb.  
-	
-	\item \textbf{RadiusNeighborsClassifier:} az előző módszerrel ellentétben nem a $k$ legközelebbi szomszédot veszi figyelembe, hanem a fejlesztő által megadott $r$ sugárba eső pontokat csoportosítja egy osztályba. Amennyiben az adathalmaz nem egyenletesen mintavételezett a RadiusNeighborsClassifier jobb választás lehet.
-\end{itemize}
-
-\subsubsection{Nearest Centroid Classifier}
-Egyszerű algoritmus, ahol minden osztályt a tagjai középpontja reprezentál
-
-\subsubsection{MLPClassifier}
-Multi-layer Perceptron Classification, azaz mesterséges neuronokból felépülő többrétegű struktúrán, más néven egy neurális hálón alapuló osztályozást valósít meg. Bemenetként a feature-ok $X$ mátrixát és a label-ek $y$ vektorát várja. A modell backpropagation-t használ a tanulás során, pontosabban gradiens leereszkedést, ami backpropagation használatával kerül kiszámításra. Az osztályozáshoz a kereszt entrópia funkciót minimalizálja, az egyes $x$ mintákhoz a $P(y|x)$ valószínűséget becsülve. Támogatja a  multi-class osztályozást a Softmax függvény output funkcióként való alkalmazásával, valamint a multi-label osztályozást, melynek segítségével egy minta több osztályba is sorolható.
+%\subsubsection{MLPRegressor} \label{ssec:mlpregressor}
+%Multi-layer Perceptron Regression \cite{sklearn-mlpregressor}, azaz mesterséges neuronokból felépülő többrétegű struktúrán, más néven egy neurális hálón alapuló regressziót valósít meg. Ez egy felügyelt tanulási algoritmus, tehát inputként a feature-ok egy mátrixát ($X$) valamint a hozzájuk tartozó helyes label-eket ($y$) várja. Ezen értékek alapján backpropagation-t használva a módszer folytonos értékek készletével tér vissza. Az MLPRegressor továbbá több kimenetű regressziót is támogat, így egy mintához több output érték is rendelhető.
 
 
 \SubSection{Klaszterezés} \label{ssec:klaszterezes}
-A klaszterezés alapfeladata hasonló az osztályozáséhoz, az adatokat különböző csoportokba kell rendezni, azonban ez felügyelet nélküli módszer, a helyes label-ek nélkül próbál adott számú osztályt kialakítani. 
-\subsubsection{KMeans}
-\TODO kifejtés
+A klaszterezés egy felügyelet nélküli gépi tanulási módszer, amelynek célja egy adathalmazt különálló csoportokra (klaszterekre) felbontani az adathalmazban fellelhető jellemzők alapján. A klaszterek kialakításakor a cél mindig valamilyen hasonlóság megtalálása az egyes adatpontok között, így az adott szempontból hasonló adatok fognak egy klasztert alkotni. Hasonlóság meghatározására rengeteg különböző módszer létezik, két legnagyobb csoportja körül az első a tömörséget, távolságot veszi alapul a második pedig a pontok kapcsolódását vizsgálja. Mindkét csoportban rengeteg különböző megvalósítás létezik.
 
-\subsubsection{MeanShift}
-\TODO kifejtés
+\subsubsection{K-Means}
+A K-Means \cite{sklearn-kmeans} eljárás az egyik legelterjedtebb, széles körben használt klaszterezési módszer, amely az adatpontokat távolságuk alapján csoportosítja. A módszer alapgondolata azonos szórású klaszterek kialakítása a tehetetlenség (\textit{inertia}) vagy másképp a klasztereken belüli négyzetösszegek minimalizálásával:
+$$\sum_{i=0}^{n} \min_{\mu_j \in C} (|| x_i - \mu_j ||^2)$$,
+ahol $n$ az $X$ adathalmaz darabszáma, $C$ a $c_j$ klasztereket tartalmazó halmaz és $\mu_j$ a $c_j$ klaszter középértéke, ami egyben a klaszter jellemzésére is szolgál. A $\mu_j$ pontot szokás középpontnak is nevezni, azonban ez az érték általában nem eleme az $X$ halmaznak. A K-Means algoritmus az $n$ mintát $K$ diszjunkt klaszterre osztja, ahol $K$ értékét előre definiálni kell.
 
+A módszer jól teljesít nagy mennyiségű mintát tartalmazó adathalmazon azonban koránt sem tökéletes:
+\begin{itemize}
+	\item feltételezi hogy a klaszterek konvexek és izotrópok, ami természetesen nem mindig teljesül. Ebből kifolyólag rosszul teljesít hosszúkás vagy szabálytalan elrendezésű adaton
+	\item a minimalizálásra kijelölt tehetetlenség nem normalizált mérőszám, annyit tudni róla hogy a kisebb értékek jobbak és nulla az optimális. Így az Euklideszi távolság használata miatt magas dimenziószámú adathalmaz esetén erősen ajánlott valamilyen dimenzió redukciós eljárás alkalmazása
+\end{itemize}
+
+
+\subsubsection{Mini-Batch K-Means }
+%A MeanShift \cite{sklearn-meanshift}\TODO kifejtés
+A Mini-Batch K-Means klaszterezési eljárás a K-Means egy variánsa, amely a számítási idő csökkentésének érdekében mini kötegeket (\textit{batch}) használ, ugyanakkor igyekszik optimalizálni ugyanazt a célfüggvényt. Ezek a mini kötegek az adathalmaz véletlenszerűen választott részhalmazai, amelyek az eljárás során egységként kezelve kerülnek hozzárendelésre a legközelebbi klaszter középponthoz. Más K-Means gyorsító eljárásokkal szemben a Mini-Batch előnye hogy általánosságban nagyon kicsit a eredmény romlása az alap K-Means-hez képest.
+
+\subsubsection{Spectral}
+A Spectral klaszterezési módszer \cite{sklearn-spectral} \cite{ml-spectral} a K-Means algoritmussal szemben nem a pontok távolsága alapján alakítja ki a klasztereket, hanem azok kapcsolatát veszi alapul: hiába esik közel egymáshoz két pont, amennyiben nem kapcsolódnak nem kerülnek egy klaszterbe. A módszer az adathalmazt egy alacsony dimenziójú térre vetíti le és itt alakít ki egy ún. affinitási mátrixot. Ez az affinitási mátrix tárolja hogy mely pontok kapcsolódnak egymáshoz: ehhez a pontok páronkénti távolságát vizsgálja. Két pont között akkor áll fent kapcsolat ha távolságuk kisebb mint valamilyen $\epsilon$ érték.
+
+A Spectral és a K-Means algoritmusok különbözőségét a \myref{fig:spectralVSKmeans} ábra szemlélteti. Látható hogy míg a K-Means gyakorlatilag egy vonal mentén kettészeli az adathalmazt, nem törődve a spirális alakzattal, addig a Spectral klaszterezés a két spirál vonal alapján alakítja ki a két klasztert.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth,keepaspectratio]{kepek/spectral_vs_kmeans.png}
+	\caption{K-Means és Spectral klaszterezés összehasonlítása \cite{ml-spectral-vs-kmeans-img}}
+	\label{fig:spectralVSKmeans}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -309,24 +221,54 @@ A klaszterezés alapfeladata hasonló az osztályozáséhoz, az adatokat külön
 A gépi tanulás módszerei önmagukban mit sem érnek, megfelelő méretű és minőségű adathalmazra van szükség amiből az algoritmusok tanulni tudnak. Azonban adatgyűjtés mindig érzékeny terület, sok időt, energiát felemészt és a kívánt eredmény ezek befektetésével sem mindig garantált. A szakdolgozathoz elsősorban biciklivel megtett utak statisztikai adataira van szükség, amihez a Strava mobil és webes alkalmazás ad kiindulási alapot. A fejlesztői munkát segíti a Strava saját API-ja, aminek segítségével egyszerűen megvalósítható a felhasználók autentikációja valamint a szükséges adatok elérése. 
 
 \SubSection{Adatgyűjtés}
-A Strava által gyűjtött és tárolt adatok elérésének alapját egy, a szakdolgozat keretein belül készített weboldal adja. Ezen oldal felkeresésével a felhasználók tájékozódhatnak a szakdolgozatról, az adatgyűjtés fontosságáról valamint alapvető funkciókat használhatnak. Az oldalon lehetőség van új felhasználó létrehozására, már létező fiókokba való bejelentkezésre. Bejelentkezés után a felhasználó hozzákapcsolhatja a Strava fiókját a weblapon létrehozott fiókjához, ezzel lehetővé téve az útvonalai statisztikai adatainak olvasását. A weboldalon továbbá lehetőséget fog kínálni az elkészült, betanított program letöltésére, amivel a felhasználók is megtapasztalhatják az egyes algoritmusok hatékonyságát. A weboldal az alábbi eszközök felhasználásával valósult meg:
+A Strava által gyűjtött és tárolt adatok elérésének alapját egy, a szakdolgozat keretein belül készített weboldal adja, amely a https://cycling-with-ml.firebaseapp.com címen érhető el. Ezen oldal felkeresésével a felhasználók tájékozódhatnak a szakdolgozatról, az adatgyűjtés fontosságáról valamint alapvető funkciókat használhatnak. Az oldalon lehetőség van új felhasználó létrehozására és már létező fiókokba való bejelentkezésre. Bejelentkezés után a felhasználó hozzákapcsolhatja a Strava fiókját a weblapon létrehozott fiókjához, ezzel lehetővé téve az útvonalai statisztikai adatainak olvasását. A weboldal az alábbi eszközök felhasználásával valósult meg:
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.35\textwidth}
+		\centering
+		\includegraphics[ width=\textwidth,keepaspectratio]{kepek/website/websiteRegister.png}
+		\caption{Regisztráció}
+		\label{fig:websiteRegister}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.35\textwidth}
+		\centering
+		\includegraphics[ width=\textwidth,keepaspectratio]{kepek/website/websiteAccount.png}
+		\caption{Fiók}
+		\label{fig:websiteAccount}
+	\end{subfigure}
+	
+	\caption{Adatgyűjtő weboldal alapvető funkciói}
+%	\label{fig:websiteRegister}
+\end{figure}
 
 \subsubsection{JQuery}
-A JQuery egy népszerű JavaScript könyvtár amely lehetőséget ad a HTML elemek könnyebb manipulálására, az események egyszerűbb kezelésére, animációk megvalósítására.
+A JQuery \cite{jquery} egy népszerű JavaScript könyvtár amely lehetőséget ad a HTML elemek könnyebb manipulálására, az események egyszerűbb kezelésére, animációk megvalósítására. 
 
 \subsubsection{Firebase}
-A Firebase egy Google által fejlesztett sokoldalú rendszer, amely egyszerű eszközöket kínál egy weboldal logikai részének felépítéséhez. Nem alkalmas robosztus rendszerek létrehozásához, azonban kisebb projektek menedzseléséhez megfelelő alapot kínál. A projekteket létrehozás után online lehet kezelni és a Firebase funkcióit weboldalakban és mobil alkalmazásokban is (mind Android és IOs) egyszerűen lehet használni. A rendszer alapját egy Node.js szerver és egy JSON alapú adatbázis adja valamint elérhető egy általános célú tárhely tetszőleges file-ok tárolásához. 
+A Firebase \cite{firebase} egy Google által fejlesztett sokoldalú rendszer, amely egyszerű eszközöket kínál egy weboldal logikai részének felépítéséhez. Nem alkalmas robosztus rendszerek létrehozásához, azonban kisebb projektek menedzseléséhez megfelelő alapot kínál. A projekteket létrehozás után online lehet kezelni és a Firebase funkcióit weboldalakban és mobil alkalmazásokban is (mind Android és iOS) egyszerűen lehet használni. A rendszer alapját egy Node.js szerver és egy JSON alapú adatbázis adja valamint elérhető egy általános célú tárhely tetszőleges file-ok tárolásához. 
 
 \subsubsection{Firebase - Autentikáció}
-A szakdolgozathoz készített weboldal szempontjából a Firebase egyik legfontosabb eleme az autentikációs rendszer. A Firebase projektben való engedélyezés után néhány sor JavaScript kóddal gyorsan és biztonságosan megvalósítható az új felhasználók regisztrálása, bejelentkeztetése. Az email alapú regisztráláson túl lehetőség van külső rendszerekkel való autentikációra is mint a Google fiók, Facebook, Github. Továbbá elérhető a már regisztrált felhasználók emailen kersztül történő értesítése is.
+A szakdolgozathoz készített weboldal szempontjából a Firebase egyik legfontosabb eleme az autentikációs rendszer. A Firebase felületén való engedélyezés után a weboldal kódbázisában gyorsan és biztonságosan megvalósítható az új felhasználók regisztrálása, bejelentkeztetése. Az email alapú regisztráláson túl lehetőség van külső rendszerekkel való autentikációra is mint a Google fiók, Facebook, Github. Továbbá elérhető a már regisztrált felhasználók emailen keresztül történő értesítése is.
 
 \subsubsection{Firebase - Adatbázis}
-A Firebase alapvetően ingyenes, emiatt az adatbázisnak vannak méret és sebességbeli korlátjai, azonban megfelelő kiindulási alapot ad. A JSON alapú struktúra megkönnyíti az adatok kliensen való kezelését valamint egy ilyen méretű alkalmazás esetén egyszerűen karban tartható. Fontos kiemelni az adatbázis hozzáférhetőségének konfigurálási lehetőségét. Lehetőség van az adatbázis egészére vagy a részfákra olvasási és írási beállításokat megadni, amik korlátozhatóak a bejelentkezett felhasználó azonosítója alapján is. Ennek felhasználásával könnyen megvalósítható hogy a rendszer összes felhasználója csak a saját adataihoz férjen hozzá ami fontos adatvédelmi szempont.
+A Firebase alapvetően ingyenes, emiatt az adatbázisnak vannak méret és sebességbeli korlátjai, azonban megfelelő kiindulási alapot ad. A JSON alapú struktúra megkönnyíti az adatok kliens oldalon történő kezelését valamint egy ilyen méretű alkalmazás esetén egyszerűen karban tartható. Fontos kiemelni az adatbázis hozzáférhetőségének konfigurálási lehetőségét. Lehetőség van az adatbázis egészére vagy a részfákra olvasási és írási beállításokat megadni, amik korlátozhatóak a bejelentkezett felhasználó azonosítója alapján is. Ennek felhasználásával könnyen megvalósítható hogy a rendszer összes felhasználója csak a saját adataihoz férjen hozzá ami fontos adatvédelmi szempont.
 
 \SubSection{Adatstruktúra} \label{ssec:adatstruktura}
-A szakdolgozathoz készített weboldal fő célja hogy lekérje és tárolja azon felhasználók útvonalait akik regisztrálás után kapcsolódtak a Strava fiókjukhoz. A Strava API-ja az utak lekérésekor SummaryActivity objektumok tömbjével tér vissza, ahol minden objektum 39 változóval jellemez egy utat, aktivitást. Ez a 39 jellemző magába foglalja többek között a felhasználó azonosítóját, a megtett távot, a teljesített kihívások számát, az ismerősök megjegyzéseinek a számát és rengeteg egyéb információt. A gépi tanulás során ezeknek a jellemzőknek csak egy részét érdemes használni, amik szorosabban kapcsolódnak az út valós leírásához. Ezek a jellemzők a következők: 
+A szakdolgozathoz készített weboldal fő célja hogy lekérje és tárolja azon felhasználók útvonalait akik regisztrálás után kapcsolódtak a Strava fiókjukhoz. A Strava API-ja az utak lekérésekor SummaryActivity objektumok tömbjével tér vissza, ahol minden objektum 39 változóval jellemez egy utat, aktivitást. Ez a 39 jellemző magába foglalja többek között a felhasználó azonosítóját, a megtett távot, a teljesített kihívások számát, az ismerősök megjegyzéseinek a számát és rengeteg egyéb információt. A gépi tanulás során ezeknek a jellemzőknek csak egy részét érdemes használni, amik szorosabban kapcsolódnak az út valós leírásához. Ezek a jellemzők valamit a felhasználókhoz kapcsolódó adatok szerkezete a \myref{fig:dataStructure} ábrán látható, leírásuk a következőkben kerül részletezésre.
 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[ width=0.7\textwidth,keepaspectratio]{kepek/data_structure.png}
+	\caption{Adatstruktúra}
+	\label{fig:dataStructure}
+\end{figure}
+
+\noindent \textbf{Jellemzők magyarázata:}
 \begin{itemize}
+	\item \textbf{age\_group: } felhasználó korcsoportja (0: 18-30; 1: 31-45; 2: 45+)
+	\item \textbf{hashed\_id:} felhasználó azonosító hash-elt változata
+	\item \textbf{sex: } felhasználó neme (male / female, férfi / nő)
 	\item \textbf{average\_speed:} átlagsebesség (méter/másodperc)
 	\item \textbf{average\_watts:} átlagos erőkifejtés az útvonal során. Amennyiben nem biztosított az értéke -1
 	\item \textbf{commute:} egy tevékenység rögzítésekor lehetőség van azt 'ingázásként' felcímkézni, ezzel megjelölve hogy nem egy verseny vagy túra adat, hanem mindennapi, például munkába vagy boltba járási útvonal. Feltételezhető hogy ilyenkor az illető nem a minél jobb eredmények elérésére törekszik, inkább rutin szerűen, átlagos tempóban halad (logikai; -1 amennyiben nem biztosított)
@@ -338,19 +280,16 @@ A szakdolgozathoz készített weboldal fő célja hogy lekérje és tárolja azo
 	\item \textbf{end\_latlng:} az útvonal végpontjának hosszúsági és szélességi helyzete
 	\item \textbf{flagged:} az útvonal meg van e jelölve (logikai)
 	\item \textbf{has\_heartrate:} elérhető e pulzus adat (logikai)
-	\item \textbf{heartrate\_opt\_out:} 
 	\item \textbf{kilojoules:} összes kifejtett erő mennyisége (kilojoule)
 	\item \textbf{max\_speed:} maximum sebesség az út során (méter/másodperc)
 	\item \textbf{max\_watts:} maximális erőkifejtés az út során
 	\item \textbf{moving\_time:} mozgással töltött idő (másodperc)
-	\item \textbf{pr\_count:}
-	\item \textbf{resource\_state}
 	\item \textbf{start\_date\_local:} az út kezdési ideje (dátum)
 	\item \textbf{start\_latlng:} az útvonal kezdőpontjának hosszúsági és szélességi helyzete
 	\item \textbf{total\_elevation\_gain:} összesen megtett emelkedő (méter)
-	\item \textbf{trainer:} az útvonal gépen lett e megtéve
-	\item \textbf{weighted\_average\_watts:}
-	\item \textbf{workout\_type:} tevékenység típusa, lehet edzés vagy verseny (egész szám, ha nincs megadva akkor -1 ?? )
+	\item \textbf{trainer:} az útvonal gépen lett e megtéve (logikai)
+	\item \textbf{weighted\_average\_watts:} súlyozott átlagos erőkifejtés az útvonal során. Ha  nem biztosított az értéke: -1.
+	\item \textbf{workout\_type:} tevékenység típusa, lehet edzés vagy verseny (egész szám, ha nincs megadva akkor -1. Lehetséges értékei: 10 - normál kerékpározás; 11 - verseny; 12 - edzés )
 \end{itemize}
 
 

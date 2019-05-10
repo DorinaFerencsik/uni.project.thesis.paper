@@ -1,144 +1,34 @@
 %Az első fejezet
 \Chapter{Bevezetés}
 \label{Chap:bevezetes}
-\iffalse
-A bevezet�sben kell le�rni azokat a motiv�ci�kat, melyek a szakdolgozat meg�r�s�hoz vezettek. Ezt minimum 1 maximum 4 oldalban tegy�k meg. Fontos, hogy a fejezet c�me, a ,,Bevezet�s'' sz� NEM m�dos�that�! Lehet benne t�bb alfejezet is, b�r nem aj�nlott.\\
-
-Az al�bbiakban egy kis technikai seg�ts�g j�n a szerkeszt�shez!\\
-
-A forr�sba �rhatunk �kezetes karaktereket! Haszn�lhatunk referenci�kat az egyenletekhez, �br�khoz, t�bl�zatokhoz, irodalomjegyz�khez! N�zz�k ezeket a p�ld�kat!
-
-\Section{Egyenletek}
-
-\begin{equation}
-4x+5y=\frac{3}{4}
-\label{eq:eq1}
-\end{equation}
-Teh�t \myaref{eq:eq1} egyenletben\ldots ez egy dinamikus referencia haszn�lata volt!
-
-Pr�b�ljuk ki a \verb|align| �s \verb|alignat*| k�rnyezetet!
-\begin{align}
-4x+5y&=\frac{3}{4}\label{eq:eq2}\\
-3x^2+5\cdot\frac{1}{2}&=3\nonumber\\
--2x-10y&=\frac{3}{4}\label{eq:eq3}
-\end{align}
-Ekkor a \verb|\nonumber| hat�s�ra nincs sz�ma a m�sodik egyenletnek, de a t�bbire k�nnyed�n tudunk hivatkozni:
-\myaref{eq:eq2} egyenletre �s \ref{eq:eq3}-ra is!
-\begin{alignat*}{4}
-  13x &+{} &  4y &    &     & ={} & 9\\
-   3x &-{} & 12y &+{} & 23z & ={} &14
-\end{alignat*}
-Az \verb|alignat*| mivel csillagos parancs, ez�rt nem ad egyenletsz�mot. Ha az irodalomjegyz�kre t�rt�nik referencia:
-\verb|\acite{hivatkoz�si n�v}|, melynek eredm�nye p�ld�ul \acite{LaTeX}.
-
-\Section{�br�k}
-\label{Sec:abrak}
-
-Helyezz�nk el egy �br�t! P�ld�ul egy mikul�s�t (\myref{fig:mikulas} �bra)! Mi�rt ne\ldots
-%figure k�rnyezet: �br�k �sztat�sa
-\begin{figure}[ht]
-\centering
-\epsfig{file=kepek/mikulas.eps, width=5cm, height=5cm}
-\caption{Mikul�s $5\mbox{\,cm}\times 5\mbox{\,cm}$-ben}
-\label{fig:mikulas}
-\end{figure}
-
-\newpage
-
-\Section{T�bl�zatok}
-
-�sszevont oszlopok �s sorok megval�s�t�sa sem neh�z, azaz a \LaTeX\ mindent tud! :) (A fejl�c is automatiz�lt\ldots)
-
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-\multirow{2}[3]*{\textit{Input pontok}} & \multicolumn{2}{c|}{\textit{eredeti}} &
- \multicolumn{2}{c|}{\textit{dinamikus}} \\
-& \textit{iter�ci�} & \textit{neuronok} & \textit{iter�ci�} & \textit{neuronok} \\
-\hline 10 & 3200 & 40 & 2300 & 30 \\ \hline 100 & 5500 & 400 & 3600 & 250 \\ \hline
-\end{tabular}
-\end{center}
-
-T�bl�zat igaz�t�sa fel�l
-\begin{tabular}[t]{|l| c c|}
-\cline{2-3} \multicolumn{1}{c|}{}
-&\multicolumn{2}{c|}{�v}\\\cline{2-3}
-\multicolumn{1}{c|}{}&2002&2003\\\hline
-J�vedelem & 775000 & 866500\\
-Ad�       & 165000 & 194950\\\hline
-\end{tabular} �s alul is \begin{tabular}[b]{|c|}
-\hline
-K�z�pre \\\hline
-mindent!\\\hline
-\end{tabular}\\
-
-A t�bl�zatot is betehetj�k egy olyan k�rnyezetbe, melynek seg�ts�g�vel hivatkozhatunk r�, feliratot k�sz�thet�nk.
-\begin{table}[h]
-\caption{A t�bl�zat neve fel�lre ker�l}
-\begin{center}
-\label{tb:tb1}
-\begin{tabular}{|c|}
-\hline
-K�z�pre a table-lel\\\hline
-mindent!\\\hline
-\end{tabular}
-\end{center}
-\end{table}
-
-�gy teh�t a fenti \myref{tb:tb1} t�bl�zat �sztat�sa a \verb|table| k�rnyezettel val�sult meg! Haszn�lhatjuk m�g a
-a fejezet referenci�t is, hiszen ez az �bra \myaref{Sec:abrak} alfejezetben tal�lhat�!
-
-\newpage
-
-%Egy r�vid�tett v�ltozat a fejl�cben
-\SSection{Ismerkedj�nk meg a professzion�lis sz�vegszer-\linebreak[4] keszt�ssel}{Ismerkedj�nk meg a\ldots}
-{Ismerkedj�nk meg a professzion�lis sz�vegszerkeszt�ssel}
-
-Term�szetesen hozz� kell szokni ahhoz, hogy a \LaTeX-ben programozzunk, de nem neh�z, ha m�r egyszer nekifogtunk!
-
-\SubSection{Ha m�r ez is megy\ldots}
-
-Haszn�ljuk az \verb|\include| (esetleg a \verb|\myinclude|) �s a \verb|\Chapter| (vagy a \verb|\SChapter|)
-parancsokat. �rdemes minden fejezetet (�s m�st is pl.: irodalomjegyz�k, c�mlap)
-k�l�n \verb|.tex| �llom�nyk�nt besz�rni, mivel �gy a fejezetek cser�je k�nnyen megoldhat�, r�ad�sul
-minden fejezet �j oldalon (a \verb|\Chapter| vagy \verb|\SChapter| eset�n minden fejezet p�ratlan oldalon) kezd�dik!
-
-\SubSection{F�ggv�nyek �br�zol�sa a \LaTeX-ben}
-
-Ha koordin�tarendszerben akarunk �br�zolni ismert hozz�rendel�s� f�ggv�nyt, akkor ehhez adott az \verb|mfpic| csomag,
- amely mindent tartalmaz, ami a rajzol�shoz kell!
-\begin{center}
-\opengraphsfile{kepek/fv}
-\begin{mfpic}[30]{-3}{3.1}{-3}{3}
-  \axes
-  \function{-2.4,2.2,0.1}{((x**3)-2x)/3}
-  \tlabel(0.1,2.7){$(x^3-2x)/3$}
-\end{mfpic} \bigskip
-\newcounter{FA}
-\begin{mfpic}[3]{-40}{40}{-25}{25}
-\setcounter{FA}{-30}
-\whiledo{\theFA<31}{%
-  \ellipse[\theFA]{(0,0),40,12}
-  \addtocounter{FA}{10}}
-  \end{mfpic}
-\closegraphsfile
-
-
- \end{center}
-\fi 
 %1-4 oldal
 
-Először 2018. nyarán kezdtem el az adatbányászattal és gépi tanulással foglalkozni és ahogy mind többet értettem meg belőle inkább érdekelt a terület, a kihívásai. A lelkesedés kitartott így ősszel a témaválasztás határidejének közeledtével az lebegett a szemem előtt hogy a területhez szorosan kapcsolódó szakdolgozatot tudjak elkezdeni.
- 
-Az irány megszabása után egy konkrét célt kellett találni, egy alkalmazási területet ahol a gépi tanulás jól hasznosítható, olyan problémák, feladatok vannak amihez érdemes lehet gépi tanulás algoritmusokat használni. Hosszas mérlegelés után a különböző sportok közül a kerékpározásra esett a választás. Ennek több oka is volt. Elsősorban a kerékpározás népszerű, elterjedt mozgásforma, így esélyesnek tűnt hogy viszonylag nagy mennyiségű statisztikai adatot lehet róla gyűjteni, változatos sportolói körből. Továbbá mikor időm engedi én is kerékpározok és ezeket az utakat rögzítem, így néhány kiinduló adat már elérhető volt ami alapján el tudtam kezdeni a tervezést. Az utak nyomon követésére a Strava mobil és webes alkalmazás szolgált, ami részletesen tárolja az egyes útvonalak statisztikai adatait. Az elérhető adatokat elemezve behatároltam több feladatot mint pl.:
+A gépi tanulás egy egyre szélesebb körben használt és alkalmazott informatikai ág, mely az egyszerű levélszemét szűréstől a képfelismerésen és hangfeldolgozáson át rengeteg területen fontos szerepet játszik. Célja mindig meglévő adatok elemzése, egyfajta tanulási folyamat, amely után a jövőben új adatokra valamilyen becslés készíthető. Ennek az ágazatnak az al-területei nagyon szétágazóak, rengeteg létező megvalósítással. Általánosságban a tanulási módszer és a cél szerint csoportosíthatóak:
 \begin{itemize}
-	\item Egy adott útvonal jellemzőinek ismeretében a teljesítéshez szükséges várható időtartam meghatározása. Ez az időtartam két részre választható szét, megkülönböztetjük a mozgással töltött időt a teljes eltelt időtartamtól ami a mozgási időből és a járulékos időveszteségekből adódik mint a forgalmi lámpánál várakozás, pihenés, hosszabb utak esetén étkezés.
-	\item Már megtett utak csoportosítása, nehézségi fokozatok meghatározása.
-	\item A nehézségi szintek alapján edzéstervek készítése.
+	\item felügyelt tanulás: az adatnak része az információ amelynek a becslése a cél. A felügyelt módszerek csoportjába tartozó algoritmusok a magyarázó jellemzőket tartalmazó $X$ adathalmaz alapján tanulják meg a függő $y$ változó értékeit, általában valamilyen közelítést alkalmazva. A gépi tanulási módszerek nagyobb része ide sorolható.
+	\item felügyelet nélküli tanulás: ebben az esetben az adathalmaz nem tartalmazza a függő $y$ változót, nem tudni hogy mire kell becslést készíteni. Jellemzően ide tartoznak a különböző klaszterezési eljárások, ahol valamilyen szempontból hasonló adatpontok csoportokba rendezése a cél, anélkül hogy az adatok hovatartozásáról bármilyen információ ismert lenne. 
 \end{itemize}
 
-Azonban a sportteljesítmény becslése nehéz feladat, mivel egyénenként nagyon eltérő, valamint az út nyers adatain kívül az egyén pillanatnyi fizikai és szellemi állapota is nagyban befolyásolja a teljesítményét (álmosság, kimerültség, kedvtelenség stb.). Ezért el kell dönteni hogy egy általános modell megépítése a cél, ami esetleg életkor, nem, edzettségi szint szerint finomhangolható azonban kisebb pontossággal rendelkezik, vagy személyre szabott, pontos becsléseket kell elérni ahol viszont a gépi tanulás során nehézséget okozhat a kis méretű adathalmaz, hiszen kevesen rendelkeznek akár csak egy-két ezer rögzített úttal, míg a megfelelő pontossághoz az egyes algoritmusoknak ennél nagyságrendekkel több adatra van szüksége.
+A különböző gépi tanulási módszerek terjedésével a sport világában is hamar megjelent az alkalmazásuk, azonban elsősorban a profi, versenyzői szférában ahol régebb óta általános a sportolói eredményekre vonatkozó adatok gyűjtése, valamint természetesen nagyobb a pénzügyi forgás mint a hobbi sportolók esetében. Szakdolgozatom célja ebből kifolyólag a mindennapi, hobbi sportolók eredményeinek feldolgozása gépi tanulási módszerekkel, hiszen ez egy olyan terület ahol még nem sok megoldás létezik, azonban egyre nagyobbak a felhasználói igények.
+
+A konkrét megvalósításhoz kerékpáros teljesítmények felhasználása került kitűzésre, egyrészt saját érdeklődési kör miatt, másrészt a kerékpáros útvonalak egyszerű mérhetőségéből és az adatok sokszínűségéből kifolyólag. Az így kitűzött adathalmaz specifikusságából eredően az adatgyűjtési folyamat is a szakdolgozat részét képezi, ami magába foglalja egy erre a célra készített weboldal megtervezését és kialakítását.
+
+
+
+
+
+
+%Először 2018. nyarán kezdtem el az adatbányászattal és gépi tanulással foglalkozni és ahogy mind többet értettem meg belőle inkább érdekelt a terület, a kihívásai. A lelkesedés kitartott így ősszel a témaválasztás határidejének közeledtével az lebegett a szemem előtt hogy a területhez szorosan kapcsolódó szakdolgozatot tudjak elkezdeni.
  
-Az elsődleges cél általános modellek építése, ahol egy feladat megoldásához különböző gépi tanulási algoritmusokat lehet alkalmazni, ezeket egyenként javítani, maximalizálni a pontosságukat. Utána pedig az algoritmusokat össze kell hasonlítani a teljesítményük, felhasznált módszertanaik alapján.
+%Az irány megszabása után egy konkrét célt kellett találni, egy alkalmazási területtet ahol a gépi tanulás jól hasznosítható, olyan problémák, feladatok vannak amihez érdemes lehet gépi tanulás algoritmusokat használni. Hosszas mérlegelés után a különböző sportok közül a kerékpározásra esett a választás. Ennek több oka is volt. Elsősorban a kerékpározás népszerű, elterjedt mozgásforma, így esélyesnek tűnt hogy viszonylag nagy mennyiségű statisztikai adatot lehet róla gyűjteni, változatos sportolói körből. Továbbá mikor időm engedi én is kerékpározok és ezeket az utakat rögzítem, így néhány kiinduló adat már elérhető volt ami alapján el tudtam kezdeni a tervezést. Az utak nyomon követésére a Strava mobil és webes alkalmazás szolgált, ami részletesen tárolja az egyes útvonalak statisztikai adatait. Az elérhető adatokat elemezve behatároltam több feladatot mint pl.:
+%\begin{itemize}
+%	\item Egy adott útvonal jellemzőinek ismeretében a teljesítéshez szükséges várható időtartam meghatározása. Ez az időtartam két részre választható szét, megkülönböztetjük a mozgással töltött időt a teljes eltelt időtartamtól ami a mozgási időből és a járulékos időveszteségekből adódik mint a forgalmi lámpánál várakozás, pihenés, hosszabb utak esetén étkezés.
+%	\item Már megtett utak csoportosítása, nehézségi fokozatok meghatározása.
+%	\item A nehézségi szintek alapján edzéstervek készítése.
+%\end{itemize}
+
+%Azonban a sportteljesítmény becslése nehéz feladat, mivel egyénenként nagyon eltérő, valamint az út nyers adatain kívül az egyén pillanatnyi fizikai és szellemi állapota is nagyban befolyásolja a teljesítményét (álmosság, kimerültség, kedvtelenség stb.). Ezért el kell dönteni hogy egy általános modell megépítése a cél, ami esetleg életkor, nem, edzettségi szint szerint finomhangolható azonban kisebb pontossággal rendelkezik, vagy személyre szabott, pontos becsléseket kell elérni ahol viszont a gépi tanulás során nehézséget okozhat a kis méretű adathalmaz, hiszen kevesen rendelkeznek akár csak egy-két ezer rögzített úttal, míg a megfelelő pontossághoz az egyes algoritmusoknak ennél nagyságrendekkel több adatra van szüksége.
+ 
+%Az elsődleges cél általános modellek építése, ahol egy feladat megoldásához különböző gépi tanulási algoritmusokat lehet alkalmazni, ezeket egyenként javítani, maximalizálni a pontosságukat. Utána pedig az algoritmusokat össze kell hasonlítani a teljesítményük, felhasznált módszertanaik alapján.
 
 
